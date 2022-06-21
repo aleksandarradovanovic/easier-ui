@@ -4,6 +4,7 @@ import App from './App.js'
 import Login from './components/login/Login.js'
 import NavigationComponent from './components/primeCustomComponents/navigation/NavigationComponent.js'
 import CreateEventTask from './components/tasks/event/CreateEventTask.js'
+import EventImagesEdit from './components/tasks/event/EventImagesEdit.js'
 import EventOverview from './components/tasks/event/EventOverview.js'
 import CreateMyPlaceEvent from './components/tasks/place/myPlace/CreateMyPlaceEvent.js'
 import MyPlaceBasicInformationEdit from './components/tasks/place/myPlace/MyPlaceBasicInformationEdit.js'
@@ -68,6 +69,7 @@ const router =
         <Route path={'/createPlaceEvent'} component={CreateMyPlaceEvent} />
         <Route path={'/createEvent'} component={CreateEventTask} />
         <Route path={'/eventOverview'} component={EventOverview} />
+        <Route path={'/eventImagesEdit'} component={EventImagesEdit} />
         <Route path={'/login'} component={Login} />
       </App>
     </Switch>

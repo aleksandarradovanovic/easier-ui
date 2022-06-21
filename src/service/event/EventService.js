@@ -24,5 +24,9 @@ export default class EventService {
     }
     return Rest(ROOT_ENDPOINT)(fetchActions.GET, getRequest, '', '', responseHandler);
   }
+  static updateEvent(params, responseHandler) {
+    let updateRequest = "event"
+    return Rest(ROOT_ENDPOINT)(fetchActions.UPDATE, updateRequest, {id: params.eventId, data: params.data}, '', responseHandler);
+  }
 
 }

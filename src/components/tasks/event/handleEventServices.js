@@ -98,12 +98,31 @@ export const useHandleCallEventService = () => {
             null
         ))
     }
+    const handleCallUpdateEventService = (requestObject, additionalOnSuccess, additionalOnError) => {
+        let requestData = {
+            eventId: selectedEvent.id,
+            data: requestObject
+        }
+        serviceCall(new ServiceRequestData(
+            EventService.updateEvent,
+            requestData,
+            null,
+            null,
+            (data) => {
+                if (additionalOnSuccess) {
+                    additionalOnSuccess(data)
+                }
+            },
+            null
+        ))
+    }
 
     const requests = {
         handleCreateEventService: handleCallCreateEventService,
         handleSearchEventService: handleCallSearchEventService,
         handleGetEventService: handleCallGetEventService,
         handleGetEventImagesService: handleCallGetEventImagesService,
+        handleUpdateEventService: handleCallUpdateEventService,
     }
     return requests
 

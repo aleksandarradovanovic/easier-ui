@@ -32,7 +32,7 @@ export const handleSuccessGetEventImagesResponse = () => {
     const handleResponse = (response) => {
         if (response && response.items) {
             dispatch(addToAppStore(applicationStore.EVENT_IMAGES, response.items))
-            dispatch(addToAppStore(applicationStore.SELECTED_IMAGES, response.items))
+            dispatch(addToAppStore(applicationStore.SELECTED_EVENT_IMAGES, response.items))
         }
     }
 

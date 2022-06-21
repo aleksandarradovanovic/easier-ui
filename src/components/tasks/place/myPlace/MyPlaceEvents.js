@@ -68,6 +68,7 @@ export const MyPlaceEvents = (props) => {
     const onDelete = (row, col) => {
         deleteEvent(row.id)
     }
+    
     return (
         <MyPlaceWrapper>
             <div className="card">

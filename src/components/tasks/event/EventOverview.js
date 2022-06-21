@@ -75,7 +75,7 @@ export const EventOverview = (props) => {
                                 <h5>
                                     <Translate value="label.images" />
                                     <Button icon="pi pi-eye" className="p-button-rounded p-button-info edit-place-button" onClick={() => { getEventImages() }} />
-                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => { getPlaceImages(true) }} />
+                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => { getEventImages(true) }} />
                                 </h5>
                                 <div>
                                     <AvatarGroup>
