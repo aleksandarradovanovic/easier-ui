@@ -7,9 +7,24 @@ export default class EventService {
     return Rest(ROOT_ENDPOINT)(fetchActions.CREATE, "event", params, '', responseHandler);
   }
   static searchEvent(params, responseHandler) {
-    let getRequest = "event"
+    let getRequest = "event?"
     if(params.placeId){
-      getRequest += "?placeId=" + params.placeId
+      getRequest += "placeId=" + params.placeId + "&"
+    }
+    if(params.page){
+      getRequest += "page=" + params.page + "&"
+    }
+    if(params.pageSize){
+      getRequest += "&pageSize=" + params.pageSize
+    }
+    if(params.eventPlaceName){
+      getRequest += "&placeName=" + params.eventPlaceName
+    }
+    if(params.eventName){
+      getRequest += "&name=" + params.eventName
+    }
+    if(params.eventType){
+      getRequest += "&type=" + params.eventType
     }
     return Rest(ROOT_ENDPOINT)(fetchActions.GET, getRequest, '', '', responseHandler);
   }

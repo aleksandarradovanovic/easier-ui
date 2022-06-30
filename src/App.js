@@ -11,6 +11,7 @@ import { getCookie } from './service/restHandler';
 import { useCreateServiceWrapper } from './service/serviceWrapper';
 import { ServiceRequestData } from './constants/service';
 import AuthenticationService from './service/auth/AuthenticationService';
+import Footer from './components/common/footer/Footer';
 const App = (props) => {
   const serviceCall = useCreateServiceWrapper();
 
@@ -48,6 +49,7 @@ const App = (props) => {
       <CommonModals />
       <MenubarDemo />
       {props.children}
+      <Footer/>
     </Fragment>
   )
 }

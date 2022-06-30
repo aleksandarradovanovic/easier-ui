@@ -6,6 +6,8 @@ import NavigationComponent from './components/primeCustomComponents/navigation/N
 import CreateEventTask from './components/tasks/event/CreateEventTask.js'
 import EventImagesEdit from './components/tasks/event/EventImagesEdit.js'
 import EventOverview from './components/tasks/event/EventOverview.js'
+import ExploreEvent from './components/tasks/explore/ExploreEvent.js'
+import HomePage from './components/tasks/home/HomePage.js'
 import CreateMyPlaceEvent from './components/tasks/place/myPlace/CreateMyPlaceEvent.js'
 import MyPlaceBasicInformationEdit from './components/tasks/place/myPlace/MyPlaceBasicInformationEdit.js'
 import MyPlaceEvents from './components/tasks/place/myPlace/MyPlaceEvents.js'
@@ -39,7 +41,7 @@ const router =
   <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
     <Switch>
       <App>
-        {/* <Route path={'/'} component={AccordionDemo} /> */}
+        <Route exact path={'/'} component={HomePage} />
         <Route path={'/accordionComponent'} component={AccordionDemo} />
         <Route path={'/tableComponent'} component={Table1} />
         <Route path={'/messagesComponent'} component={MessagesDemo} />
@@ -71,6 +73,7 @@ const router =
         <Route path={'/eventOverview'} component={EventOverview} />
         <Route path={'/eventImagesEdit'} component={EventImagesEdit} />
         <Route path={'/login'} component={Login} />
+        <Route path={'/explore'} component={ExploreEvent} />
       </App>
     </Switch>
   </Router>

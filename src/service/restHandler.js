@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import { restErrors } from '../constants/service';
 export const ERROR_PAGE_URL_400 = '/error_400'; // Add error page URL   e.g /ui-webportal-server/app/page/error
 export const ERROR_PAGE_URL_403 = '/error_403'; // Add error page URL   e.g /ui-webportal-server/app/page/error
 export const ERROR_PAGE_URL_404 = '/error_404'; // Add error page URL   e.g /ui-webportal-server/app/page/error
@@ -24,42 +25,54 @@ export const fetchActions = Object.freeze({
     GET_LIST: "GET_LIST"
 });
 
-export const fetchJson = (url, options = {}, contentTypeReturned, responseHandler) => {
+export const fetchJson = (url, options = {}, contentTypeReturned, responseHandler, customRestRoot) => {
+
     const requestHeaders = options.headers || new Headers({ 'Accept': 'application/json' });
+
     if (!requestHeaders.has('Content-Type') && (options && options.body)) {
+
         requestHeaders.set('Content-Type', 'application/json');
 
+
+
     }
+
+    if (customRestRoot) {
+
+        REST_ROOT_ENDPOINT = customRestRoot
+
+    }
+
     requestHeaders.set('Authorization', getCookie('jwt'));
+
     return fetch(`${REST_ROOT_ENDPOINT}${url}`, { ...options, headers: requestHeaders })
         .then((response) => {
-            return handleServerResponse(response, responseHandler);
+            return handleServerResponse(response);
+        }
+        ).then((response) => {
+            return resolveStatusCode(response, responseHandler);
         }
         ).catch((error) => {
+            if (responseHandler && responseHandler.onError) {
+                responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
+            }
             throw error;
         })
 }
-
 const handleServerResponse =
-    (response, responseHandler) => {
-        let status = response.status;
-        if (status) {
-            response.clone().json().then((responseJson) => {
-                if (responseJson) {
-                    return resolveStatusCode(responseJson, status, responseHandler);
-                }
-
-            });
-        }
+    (responseJson) => {
+        let status = responseJson.status;
+        return {
+            status: status,
+            data: responseJson.clone()
+        };
     };
-
 const resolveStatusCode =
-    (responseJson, status, responseHandler) => {
+    (responseJson, responseHandler) => {
+        let status = responseJson.status;
         switch (status) {
             case 400:
-                if (responseHandler && responseHandler.onError) {
-                    responseHandler.onError(responseJson)
-                }
+                window.location = ERROR_PAGE_URL_400;
                 break;
             case 403:
                 window.location = ERROR_PAGE_URL_403;
@@ -67,26 +80,67 @@ const resolveStatusCode =
             case 404:
                 window.location = ERROR_PAGE_URL_404;
                 break;
+            case 422:
+                if (responseJson.data) {
+                    responseJson.data.json().then((data) => {
+                        if (responseHandler && responseHandler.onError) {
+                            let message = 'err.' + restErrors.GENERAL_SERVER_ERROR
+                            if (data && data.code) {
+                                let params = {}
+                                if (data.params && data.params.length > 0) {
+                                    data.params.forEach((x, index) => (
+                                        params[index] = x
+                                    ));
+                                }
+                                message = I18n.t('err.' + data.code, params)
+                            }
+                            responseHandler.onError(message)
+                        }
+                    })
+                } else {
+                    if (responseHandler && responseHandler.onError) {
+                        if (responseJson.message) {
+                            responseHandler.onError(responseJson.message)
+                        } else {
+                            responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
+                        }
+
+                    }
+                }
+                break;
             case 500:
-                if (responseHandler && responseHandler.onError) {
-                    responseHandler.onError(responseJson)
+                if (responseJson.data) {
+                    responseJson.data.json().then((data) => {
+                        if (responseHandler && responseHandler.onError) {
+                            responseHandler.onError(data)
+                        }
+                    })
+                } else {
+                    if (responseHandler && responseHandler.onError) {
+                        responseHandler.onError('err.' + restErrors.SERVICE_UNAVAILABLE)
+                    }
                 }
                 break;
             case 503:
-                window.location = ERROR_PAGE_URL_503;
+                if (responseHandler && responseHandler.onError) {
+                    responseHandler.onError('err.' + restErrors.SERVICE_UNAVAILABLE)
+                }
                 break;
             case 200:
             case 201:
-                if (responseHandler && responseHandler.onSuccess) {
-                    responseHandler.onSuccess(responseJson)
-                }
             case 204:
-                if (responseHandler && responseHandler.onSuccess) {
-                    responseHandler.onSuccess()
+                if (responseJson.data) {
+                    responseJson.data.json().then((data) => {
+                        if (responseHandler && responseHandler.onSuccess) {
+                            responseHandler.onSuccess(data)
+                        }
+                    })
                 }
                 break;
             default:
-                throw new Error('ERROR_CODE_GENERIC');
+                if (responseHandler && responseHandler.onError) {
+                    responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
+                }
         }
     };
 

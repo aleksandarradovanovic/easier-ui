@@ -55,9 +55,9 @@ export const useHandleCallEventService = () => {
             requestData,
             useHandleSuccessSearchEventResponse,
             null,
-            ()=>{
+            (data)=>{
                 if(additionalOnSucess){
-                    additionalOnSucess()
+                    additionalOnSucess(data)
                 }
             },
             null

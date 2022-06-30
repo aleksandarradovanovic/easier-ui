@@ -5,137 +5,19 @@ import { Menubar } from "primereact/menubar";
 import PropTypes from 'prop-types'
 import { useHistory } from "react-router";
 import { I18n } from "react-redux-i18n";
+import { Button } from "primereact/button";
+import { getCookie } from "../service/restHandler";
 
 const MenubarDemo = () => {
   const history = useHistory();
 
   const items = [
     {
-      label: "Components",
-      icon: "pi pi-fw pi-prime",
-      items: [
-        {
-          label: "Login",
-          command: () => {
-            history.push('/login')
-          },
-          icon: "pi pi-fw pi-table",
-        },
-        {
-          label: "Accordion",
-          command: () => {
-            history.push('/accordionComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Table",
-          command: () => {
-            history.push('/tableComponent')
-
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Messages",
-          command: () => {
-            history.push('/messagesComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Badge",
-          command: () => {
-            history.push('/badgeComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Button",
-          command: () => {
-            history.push('/buttonComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Card",
-          command: () => {
-            history.push('/cardComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "ListBox",
-          command: () => {
-            history.push('/listComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "TreeTable",
-          command: () => {
-            history.push('/treeComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Dialog",
-          command: () => {
-            history.push('/dialogComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "PanelMenu",
-          command: () => {
-            history.push('/panelMenuComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "DataTable",
-          command: () => {
-            history.push('/tableComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "TabView",
-          command: () => {
-            history.push('/tabViewComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "Tooltip",
-          command: () => {
-            history.push('/tooltipComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "FileUpload",
-          command: () => {
-            history.push('/uploadComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-
-        {
-          label: "CustomStepper",
-          command: () => {
-            history.push('/customStepComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-        {
-          label: "PrimeSteps",
-          command: () => {
-            history.push('/stepsComponent')
-          },
-          icon: "pi pi-fw pi-minus",
-        },
-      ],
+      label: "Explore",
+      icon: "pi pi-fw pi-search",
+      command: () => {
+        history.push('/explore')
+      },
     },
     {
       label: "Place",
@@ -180,13 +62,35 @@ const MenubarDemo = () => {
       <img src={process.env.PUBLIC_URL + "/logo.png"} width={50} />
     </a>
   );
-  const end = <InputText placeholder="Search" type="text" />;
+  const end = <div>
+    {!getCookie("jwt") ?
+      <div className="grid">
+        <div className="col-6">
+          <Button icon="pi pi-sign-in" label="Login" className="p-button-outlined" onClick={() => {
+            history.push('/login')
+          }}></Button>
+
+        </div>
+        <div className="col-6">
+          <Button icon="pi pi-user-plus" label="Register" className="p-button-outlined"></Button>
+
+        </div>
+      </div>
+      : <div className="col-6">
+        <Button icon="pi pi-sign-out" label="Logout" className="p-button-outlined" onClick={() => {
+            document.cookie = "jwt="
+            window.location = "/"
+          }}></Button>
+
+      </div>
+    }
+
+
+  </div>;
 
   return (
     <div>
-      <div className="card">
         <Menubar model={items} start={start} end={end} />
-      </div>
     </div>
   );
 }

@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {formFields, fieldType} from "../../constants/form";
-import {I18n, Translate} from "react-redux-i18n";
+import React from "react";
+import { formFields, fieldType } from "../../constants/form";
+import { I18n, Translate } from "react-redux-i18n";
 import { useDispatch } from "react-redux";
 import FormWrapper from "../primeCustomComponents/form/FormWrapper";
 import FormElement from "../primeCustomComponents/form/FormElement";
-import {ServiceRequestData} from '../../constants/service'
-import {useCreateServiceWrapper} from '../../service/serviceWrapper'
-import {Button} from "primereact/button"
+import { ServiceRequestData } from '../../constants/service'
+import { useCreateServiceWrapper } from '../../service/serviceWrapper'
+import { Button } from "primereact/button"
 import AuthenticationService from "../../service/auth/AuthenticationService"
 import { handleErrorLoginResponse, handleSuccessLoginResponse } from "../../service/auth/handleAuthenticationServiceResponse";
 const Login = () => {
@@ -37,83 +37,48 @@ const Login = () => {
     [formFields.PASSWORD]: ""
   };
   return (
-      <FormWrapper
-        submitFunction={(data) => submitLogin(data)}
-        initialValues={initialValues}
-      >
-        <div className="card">
-          <div className="grid login text-center">
-            <div className="xl:col-offset-4 col-12 xl:col-4 text-center">
-              <img
-                src={null}
-                className="logoLogin"
-                alt="Login background."
-                style={{maxWidth: "30%"}}
-              />
-              <h2 className="login">
-                <Translate value="label.login"/>
-              </h2>
-            </div>
+    <FormWrapper
+      submitFunction={(data) => submitLogin(data)}
+      initialValues={initialValues}
+    >
+      <div className="flex align-items-center justify-content-center">
+        <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+          <div className="text-center mb-5">
+            <img src={process.env.PUBLIC_URL + "/logo.png"} alt="hyper" height={50} className="mb-3" />
+            <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
+            <span className="text-600 font-medium line-height-3">Don't have an account?</span>
+            <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
           </div>
-          <div className="grid loginColumn">
-            <div className="xl:col-offset-4 col-12 xl:col-4">
-              <FormElement
-                label={formFields.USERNAME}
-                fieldType={fieldType.INPUT_TEXT}
-                required
-                fieldProps={{name: formFields.USERNAME}}
-              />
-            </div>
-          </div>
-          <div className="grid loginColumn">
-            <div className="xl:col-offset-4 col-12 xl:col-4">
-              {" "}
-              <FormElement
-                label={formFields.PASSWORD}
-                fieldType={fieldType.PASSWORD}
-                required
-                fieldProps={{
-                  name: formFields.PASSWORD,
-                  feedback: false,
-                  toggleMask: true,
-                }}
-              />
-            </div>
-            <div className="col-4 xl"></div>
-          </div>
-          </div>
-          <div className="grid loginColumn">
-            <div className="xl:col-offset-4 col-12 xl:col-4">
-              {" "}
-              <Button
-                style={{width: "100%"}}
-                type="submit"
-                label={I18n.t("action.Login")}
-                className="mt-2 p-button-success"
-              />
-            </div>
-            {" "}
-          </div>
-          <div className="grid loginColumn linkButtons">
-            <div className="xl:col-offset-4 col-12 xl:col-2">
-              <Button
-                className="p-button-secondary p-button-text"
-                style={{width: "100%", fontSize: "13px"}}
-                label={I18n.t('action.register')}
-                onClick={() => (window.location = "/registerAccount")}
-              />
+
+          <div>
+            <FormElement
+              label={I18n.t('label.' + formFields.USERNAME)}
+              fieldType={fieldType.INPUT_TEXT}
+              required
+              fieldProps={{ name: formFields.USERNAME }}
+            />
+            <FormElement
+              label={I18n.t('label.' + formFields.PASSWORD)}
+              fieldType={fieldType.PASSWORD}
+              required
+              fieldProps={{
+                name: formFields.PASSWORD,
+                feedback: false,
+                toggleMask: true,
+              }}
+            />
+            <div className="flex align-items-center justify-content-between mb-6">
+              <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
             </div>
 
-            <div className="xl:col-2 col-12">
-              <Button
-                className="p-button-help p-button-text"
-                style={{width: "100%", fontSize: "13px"}}
-                label={I18n.t('action.forgotPassword')}
-                onClick={() => (window.location = "/forgotPassword")}
-              />
-            </div>
+            <Button label="Sign In" icon="pi pi-user" className="w-full" />
           </div>
-      </FormWrapper>
+        </div>
+      </div>
+
+
+
+    </FormWrapper>
   );
 };
 export default Login;
