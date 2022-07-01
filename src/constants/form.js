@@ -46,5 +46,11 @@ export const formFields = Object.freeze({
   EVENT_TIME_FROM:'eventTimeFrom',
   EVENT_TIME_TO:'eventTimeTo',
 
+  RESERVATION_TYPE_NAME:'reservationTypeName',
+  RESERVATION_TYPE_PRICE:'reservationTypePrice',
+  RESERVATION_TYPE_REMARK:'reservationTypeRemark',
+  RESERVATION_TYPE_MAX_NUMBER_OF_GUESTS:'reservationTypeMaxNumberOfGuests',
+
+
 
 })

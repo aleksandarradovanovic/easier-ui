@@ -22,6 +22,10 @@ export const EventOverview = (props) => {
     const getEventImages = (edit) => {
         handleCallEventService.handleGetEventImagesService(edit)
     }
+    const editEventInformation = () => {
+        history.push('/myEventBasicInformationEdit')
+
+    }
     const basicInformationsTemplate = () => {
         let basicKeys = [
             "name",
@@ -59,7 +63,7 @@ export const EventOverview = (props) => {
                             <div className='col-12'>
                                 <h5>
                                     <Translate value="label.basicInformations" />
-                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => editBasicInformation()} />
+                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => editEventInformation()} />
 
                                 </h5>
                                 <div>{basicInformationsTemplate()}</div>

@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { Translate } from 'react-redux-i18n';
 import { change } from '../../../actions/globalFormActions';
 import { fieldType, formFields } from '../../../constants/form';
+import MapPickerComponent from '../../common/MapPickerComponent';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
 
@@ -96,17 +97,7 @@ const PlaceLocationPicker = () => {
                     </div>
 
                 </FormWrapper>
-                {/* <div className='col-8'>
-                        <MapPicker defaultLocation={defaultLocation}
-                            zoom={zoom}
-                            mapTypeId="roadmap"
-                            style={{ height: '400px' }}
-                            onChangeLocation={handleChangeLocation}
-                            onChangeZoom={handleChangeZoom}
-                            apiKey='AIzaSyAkBhTU6Tc8FNdu64ZRG4rPm2bin7H7OOI' />
-                    </div> */}
-
-
+                {/* <MapPickerComponent /> */}
 
             </div>
         </Fragment>

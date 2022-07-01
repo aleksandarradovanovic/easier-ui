@@ -17,10 +17,11 @@ export const EventImagesEdit = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
         return () => {
-            dispatch(removeFromAppStore(applicationStore.SELECTED_IMAGES))
+            dispatch(removeFromAppStore(applicationStore.SELECTED_EVENT_IMAGES))
         };
       }, [])
     const updateEvent = () => {
+        debugger
         let requestObject = {...selectedEvent, imagesDtos: selectedImages}
         handleCallEventService.handleUpdateEventService(requestObject)
     }

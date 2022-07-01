@@ -9,10 +9,13 @@ import { AvatarGroup } from 'primereact/avatargroup';
 import { Button } from 'primereact/button';
 import { useHandleCallPlaceService } from './handlePlaceServices';
 import { useHistory } from 'react-router';
+import { useHandleCallEventService } from '../../event/handleEventServices';
 
 export const MyPlaceOverview = (props) => {
     const selectedPlace = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_DATA))
     const handleCallPlaceService = useHandleCallPlaceService()
+    const handleGetEventService = useHandleCallEventService()
+
     const history = useHistory();
 
     useEffect(() => {
@@ -33,6 +36,16 @@ export const MyPlaceOverview = (props) => {
     const editLocation = () => {
         history.push('/myPlaceLocationEdit')
 
+    }
+    const getPlaceEvents = () => {
+        let requestObject = {
+            placeId: selectedPlace.id
+        }
+        handleGetEventService.handleSearchEventService(requestObject,
+            () => {
+                history.push('/myPlaceEvents')
+            }
+        )
     }
     const basicInformationsTemplate = () => {
         let basicKeys = [
@@ -168,8 +181,8 @@ export const MyPlaceOverview = (props) => {
                             <div className='col-12'>
                                 <h5>
                                     <Translate value="label.events" />
-                                    <Button icon="pi pi-eye" className="p-button-rounded p-button-info edit-place-button" onClick={() => { }} />
-                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => { }} />
+                                    <Button icon="pi pi-eye" className="p-button-rounded p-button-info edit-place-button" onClick={() => { getPlaceEvents() }} />
+                                    <Button icon="pi pi-plus" className="p-button-rounded p-button-success edit-place-button" onClick={() => { history.push('/createPlaceEvent') }} />
 
                                 </h5>
                                 <div>

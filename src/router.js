@@ -5,6 +5,7 @@ import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
 import CreateEventTask from './components/tasks/event/CreateEventTask.js'
 import EventImagesEdit from './components/tasks/event/EventImagesEdit.js'
+import EventInformationEdit from './components/tasks/event/EventInformationEdit.js'
 import EventOverview from './components/tasks/event/EventOverview.js'
 import ExploreEvent from './components/tasks/explore/ExploreEvent.js'
 import HomePage from './components/tasks/home/HomePage.js'
@@ -71,6 +72,7 @@ const router =
         <Route path={'/createPlaceEvent'} component={CreateMyPlaceEvent} />
         <Route path={'/createEvent'} component={CreateEventTask} />
         <Route path={'/eventOverview'} component={EventOverview} />
+        <Route path={'/myEventBasicInformationEdit'} component={EventInformationEdit} />
         <Route path={'/eventImagesEdit'} component={EventImagesEdit} />
         <Route path={'/login'} component={Login} />
         <Route path={'/register'} component={RegisterUser} />

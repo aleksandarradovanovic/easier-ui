@@ -56,7 +56,6 @@ export const fetchJson = (url, options = {}, contentTypeReturned, responseHandle
             if (responseHandler && responseHandler.onError) {
                 responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
             }
-            throw error;
         })
 }
 const handleServerResponse =
@@ -72,7 +71,7 @@ const resolveStatusCode =
         let status = responseJson.status;
         switch (status) {
             case 400:
-                window.location = ERROR_PAGE_URL_400;
+                // window.location = ERROR_PAGE_URL_400;
                 break;
             case 403:
                 window.location = "/login";

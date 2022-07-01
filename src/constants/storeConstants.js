@@ -17,5 +17,6 @@ export const applicationStore = Object.freeze({
   EVENT_IMAGES: "eventImages",
   USER_ACTOR:"userActor",
   USER_ROLES:"userRoles",
+  SELECTED_RESERVATION_TYPE: 'selectedReservationType',
 
 });

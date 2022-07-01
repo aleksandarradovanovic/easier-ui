@@ -43,5 +43,9 @@ export default class EventService {
     let updateRequest = "event"
     return Rest(ROOT_ENDPOINT)(fetchActions.UPDATE, updateRequest, {id: params.eventId, data: params.data}, '', responseHandler);
   }
+  static deleteEvent(params, responseHandler) {
+    let deleteRequest = "event"
+    return Rest(ROOT_ENDPOINT)(fetchActions.DELETE, deleteRequest, {id: params.eventId}, '', responseHandler);
+  }
 
 }

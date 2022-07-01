@@ -15,6 +15,7 @@ import { handleSuccessGetEventImagesResponse, handleSuccessGetEventResponse, han
 export const useHandleCallEventService = () => {
     const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
     const selectedEvent = useSelector((state) => getFromAppStore(state, applicationStore.EVENT_DATA))
+    const selectedReservationType = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_RESERVATION_TYPE))
 
     const formValues = useSelector((state) => getGlobalFormValues(state))
 
@@ -34,7 +35,8 @@ export const useHandleCallEventService = () => {
             startTime: formValues[formFields.EVENT_TIME_FROM],
             endTime: formValues[formFields.EVENT_TIME_TO],
             imagesDtos: selectedImages,
-            placeId: formValues[formFields.EVENT_PLACE_NAME]
+            placeId: formValues[formFields.EVENT_PLACE_NAME],
+            reservationTypeDtos:selectedReservationType 
 
         }
         serviceCall(new ServiceRequestData(
@@ -116,6 +118,23 @@ export const useHandleCallEventService = () => {
             null
         ))
     }
+    const handleCallDeleteEventService = (id, additionalOnSuccess, additionalOnError) => {
+        let requestData = {
+            eventId: id
+        }
+        serviceCall(new ServiceRequestData(
+            EventService.deleteEvent,
+            requestData,
+            null,
+            null,
+            (data) => {
+                if (additionalOnSuccess) {
+                    additionalOnSuccess(data)
+                }
+            },
+            null
+        ))
+    }
 
     const requests = {
         handleCreateEventService: handleCallCreateEventService,
@@ -123,6 +142,7 @@ export const useHandleCallEventService = () => {
         handleGetEventService: handleCallGetEventService,
         handleGetEventImagesService: handleCallGetEventImagesService,
         handleUpdateEventService: handleCallUpdateEventService,
+        handleDeleteEventService: handleCallDeleteEventService,
     }
     return requests
 

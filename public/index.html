@@ -1,141 +1,147 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
 
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
 
-    <title>mb-react-core-example</title>
-  </head>
-  <script>
-    translationData = {
-      "en": {
-          "message": {
-            "insertData": "Please input your data",
-            "notAuthenticatedUser": "User is not authenticated.",
-          },
-          "action": {
-            "next": "Next",
-            "previous": "Previous",
-          },
-          "label": {
-            "firstName":"First name",
-            "lastName":"Last name",
-            "dateOfBirth":"Date of birth",
-            "email":"Email",
-            "phoneNumber":"Phone number",
-            "eventInformation":"Event information",
-            "createEvent":"Create event",
-            "viewEvents":"View events",
-            "eventName":"Event name",
-            "eventType":"Event type",
-            "eventDescription":"Event description",
-            "eventTimeFrom":"Event time from",
-            "eventTimeTo":"Event time to",
-            "username":"Username",
-            "password":"Password",
-            "passwordRepeat":"Password repeat",
-            "overview": "Overview",
-            "myPlaces": "My places",
-            "myPlace": "My place",
-            "name": "Name",
-            "type": "Type",
-            "startWorkingTime": "Start working time",
-            "endWorkingTime": "End working time",
-            "city": "City",
-            "country": "Country",
-            "streetAndNumber": "Street and number",
-            "latitude": "Latitude",
-            "longitude": "Longitude",
-            "images": "Images",
-            "staff": "Staff",
-            "events": "Events",
-            "uploadImages": "Upload images",
-            "uploadedImages": "Uploaded images",
-            "addSeatTable":"Add seat/table",
-            "seatTables":"Seats/tables",
-            "seatTableType":"Seat/table type",
-            "seatTableId":"Seat/table Id",
-            "basicInformations":"Basic informations",
-            "workingTime":"Working time",
-            "location":"Location",
-            "placeName":"Place name",
-            "placeType":"Place type",
-            "placeDescription":"Place description",
-            "placeWorkingTimeFrom":"From",
-            "placeWorkingTimeTo":"To",
-            "placeLocationLatitude":"Latitude",
-            "placeLocationLongitude":"Longitude",
-            "placeLocationCountry":"Country",
-            "placeLocationCity":"City",
-            "placeLocationStreetAndNumber":"Street and number",
-            "personalNumber":"Personal number",
-            "preferedIssuingSite":"Prefered Issuing Site",
-            "replaceReason":"Reason for replacement?",
-            "replaceAR":"Replace AR",
-          },
-          "err": {
-            "firstNameRequired":"First name is required",
-            "lastNameRequired":"Last name is required",
-            "dateOfBirthRequired":"Date of birth is required",
-            "emailRequired":"Email is required",
-            "eventNameRequired":"Event name is required",
-            "eventTypeRequired":"Event type is required",
-            "eventDescriptionRequired":"Event description is required",
-            "eventTimeFromRequired":"Event time from is required",
-            "eventTimeToRequired":"Event time to is required",
-            "usernameRequired":"Username is required",
-            "passwordRequired":"Password is required",
-            "passwordRepeatRequired":"Password repeat is required",
-            "nameRequired": "Name is required",
-            "typeRequired": "Type is required",
-            "startWorkingTimeRequired": "Start working time is required",
-            "endWorkingTimeRequired": "End working time is required",
-            "cityRequired": "City is required",
-            "countryRequired": "Country is required",
-            "streetAndNumberRequired": "Street and number is required",
-            "latitudeRequired": "Latitude is required",
-            "longitudeRequired": "Longitude is required",
-            "placeNameRequired":"Place name is required",
-            "placeTypeRequired":"Place type is required",
-            "placeDescriptionRequired":"Place description is required",
-            "placeWorkingTimeFromRequired":"Working time is required",
-            "placeWorkingTimeToRequired":"Woring time is required",
-            "placeLocationLatitudeRequired":"Latitude is required",
-            "placeLocationLongitudeRequired":"Longitude is required",
-            "placeLocationCountryRequired":"Country is required",
-            "placeLocationCityRequired":"City is required",
-            "placeLocationStreetAndNumberRequired":"Street and number is required",
-            "personalNumberRequired":"Personal number is required",
-            "seatTableTypeRequired":"Seat/table type is required",
-            "seatTableIdRequired":"Seat/table id is required",
-            "serverUnavailable": "Server is currently unavailable.",
-            "error": "Unexpected error occurred. Please check the logs for more information.",
-          },
-          "serverErr": {
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
-          },
-        "date": {
-          "maskFormat": "99/99/9999",
-          "stringFormat": "DD-MM-YYYY",
-          "calendarComponentFormat": "DD/MM/YYYY",
-          "serverConversionFormat": "DD/MM/YYYY"
-        }
+  <title>mb-react-core-example</title>
+</head>
+<script>
+  translationData = {
+    "en": {
+      "message": {
+        "insertData": "Please input your data",
+        "notAuthenticatedUser": "User is not authenticated.",
+      },
+      "action": {
+        "next": "Next",
+        "previous": "Previous",
+      },
+      "label": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "dateOfBirth": "Date of birth",
+        "email": "Email",
+        "phoneNumber": "Phone number",
+        "eventInformation": "Event information",
+        "createEvent": "Create event",
+        "viewEvents": "View events",
+        "eventName": "Event name",
+        "eventType": "Event type",
+        "eventDescription": "Event description",
+        "eventTimeFrom": "Event time from",
+        "eventTimeTo": "Event time to",
+        "username": "Username",
+        "password": "Password",
+        "passwordRepeat": "Password repeat",
+        "overview": "Overview",
+        "myPlaces": "My places",
+        "myPlace": "My place",
+        "name": "Name",
+        "type": "Type",
+        "startWorkingTime": "Start working time",
+        "endWorkingTime": "End working time",
+        "city": "City",
+        "country": "Country",
+        "streetAndNumber": "Street and number",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "images": "Images",
+        "staff": "Staff",
+        "events": "Events",
+        "uploadImages": "Upload images",
+        "uploadedImages": "Uploaded images",
+        "addSeatTable": "Add seat/table",
+        "seatTables": "Seats/tables",
+        "seatTableType": "Seat/table type",
+        "seatTableId": "Seat/table Id",
+        "basicInformations": "Basic informations",
+        "workingTime": "Working time",
+        "location": "Location",
+        "placeName": "Place name",
+        "placeType": "Place type",
+        "placeDescription": "Place description",
+        "placeWorkingTimeFrom": "From",
+        "placeWorkingTimeTo": "To",
+        "placeLocationLatitude": "Latitude",
+        "placeLocationLongitude": "Longitude",
+        "placeLocationCountry": "Country",
+        "placeLocationCity": "City",
+        "placeLocationStreetAndNumber": "Street and number",
+        "personalNumber": "Personal number",
+        "preferedIssuingSite": "Prefered Issuing Site",
+        "replaceReason": "Reason for replacement?",
+        "replaceAR": "Replace AR",
+        "reservationTypeName":"Type name",
+        "reservationTypePrice": "Price",
+        "reservationTypeRemark": "Remark",
+        "reservationTypeMaxNumberOfGuests":"Maximum number of guests"
+      },
+      "err": {
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "dateOfBirthRequired": "Date of birth is required",
+        "emailRequired": "Email is required",
+        "eventNameRequired": "Event name is required",
+        "eventTypeRequired": "Event type is required",
+        "eventDescriptionRequired": "Event description is required",
+        "eventTimeFromRequired": "Event time from is required",
+        "eventTimeToRequired": "Event time to is required",
+        "usernameRequired": "Username is required",
+        "passwordRequired": "Password is required",
+        "passwordRepeatRequired": "Password repeat is required",
+        "nameRequired": "Name is required",
+        "typeRequired": "Type is required",
+        "startWorkingTimeRequired": "Start working time is required",
+        "endWorkingTimeRequired": "End working time is required",
+        "cityRequired": "City is required",
+        "countryRequired": "Country is required",
+        "streetAndNumberRequired": "Street and number is required",
+        "latitudeRequired": "Latitude is required",
+        "longitudeRequired": "Longitude is required",
+        "placeNameRequired": "Place name is required",
+        "placeTypeRequired": "Place type is required",
+        "placeDescriptionRequired": "Place description is required",
+        "placeWorkingTimeFromRequired": "Working time is required",
+        "placeWorkingTimeToRequired": "Woring time is required",
+        "placeLocationLatitudeRequired": "Latitude is required",
+        "placeLocationLongitudeRequired": "Longitude is required",
+        "placeLocationCountryRequired": "Country is required",
+        "placeLocationCityRequired": "City is required",
+        "placeLocationStreetAndNumberRequired": "Street and number is required",
+        "personalNumberRequired": "Personal number is required",
+        "seatTableTypeRequired": "Seat/table type is required",
+        "seatTableIdRequired": "Seat/table id is required",
+        "serverUnavailable": "Server is currently unavailable.",
+        "error": "Unexpected error occurred. Please check the logs for more information.",
+      },
+      "serverErr": {
+
+      },
+      "date": {
+        "maskFormat": "99/99/9999",
+        "stringFormat": "DD-MM-YYYY",
+        "calendarComponentFormat": "DD/MM/YYYY",
+        "serverConversionFormat": "DD/MM/YYYY"
       }
     }
-    configurationData = {
-      
-    }
-  </script>
+  }
+  configurationData = {
 
-  <body>
-    <noscript>
-      You need to enable JavaScript to run this app.
-    </noscript>
+  }
+</script>
 
-    <div id="root"></div>
-  </body>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+
+  <div id="root"></div>
+</body>
+
 </html>

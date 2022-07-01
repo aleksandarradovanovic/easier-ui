@@ -12,12 +12,19 @@ import { useHandleCallEventService } from '../../event/handleEventServices';
 
 export const MyPlaceEvents = (props) => {
     const placeEvents = useSelector((state) => getFromAppStore(state, applicationStore.FOUND_EVENTS))
+    const selectedPlace = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_DATA))
     const handleCallEventService = useHandleCallEventService()
     const history = useHistory();
 
     const addEvent = () => {
         history.push('/createPlaceEvent')
 
+    }
+    const getPlaceEvents = () => {
+        let requestObject = {
+            placeId: selectedPlace.id
+        }
+        handleCallEventService.handleSearchEventService(requestObject)
     }
     useEffect(() => {
     }, [])
@@ -52,11 +59,11 @@ export const MyPlaceEvents = (props) => {
         })
     }
     const deleteEvent = (id) => {
-        // handleCallPlaceService.handleDeletePlaceService(id, 
-        //     () => {
-        //         getMyPlaces()
-        //     }
-        // )
+        handleCallEventService.handleDeleteEventService(id, 
+            () => {
+                getPlaceEvents()
+            }
+        )
     }
     const getEvent = (id) => {
         handleCallEventService.handleGetEventService(id)

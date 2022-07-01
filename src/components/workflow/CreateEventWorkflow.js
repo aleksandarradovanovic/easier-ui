@@ -3,6 +3,7 @@ import NavigationComponent from '../primeCustomComponents/navigation/NavigationC
 import EventInformation from '../tasks/event/EventInformation';
 import UploadEventImages from '../tasks/event/UploadEventImages';
 import { useHandleCallEventService } from '../tasks/event/handleEventServices';
+import CreateReservationTypes from '../tasks/event/CreateReservationTypes';
 export const CreateEventWorkflow = (props) => {
     const handleGetEventService = useHandleCallEventService()
 
@@ -16,6 +17,11 @@ export const CreateEventWorkflow = (props) => {
             label: "Images",
             icon: "pi pi-images",
             component: <UploadEventImages />
+        },
+        {
+            label: "Reservation Types",
+            icon: "pi pi-images",
+            component: <CreateReservationTypes />
         }
     ]
     const onSaveEvent = () => {
