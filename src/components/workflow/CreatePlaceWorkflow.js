@@ -17,27 +17,27 @@ export const CreatePlaceWorkflow = (props) => {
     let items = [
         {
             label: "Basic informations",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-cog",
             component: <PlaceInformation />
         },
         {
             label: "Location",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-map-marker",
             component: <PlaceLocationPicker />
         },
         {
             label: "Images",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-images",
             component: <UploadPlaceImages />
         },
         {
             label: "Seat/table",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-th-large",
             component: <SeatTable />
         },
         {
             label: "Summary",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-align-justify",
             component: <Summary />
         }
     ]
@@ -47,7 +47,7 @@ export const CreatePlaceWorkflow = (props) => {
     }
     return (
         <div class="grid">
-            <div class="col-8 col-offset-2">
+            <div class="col-12 lg:col-8 lg:col-offset-2">
                 <NavigationComponent items={items} onSave={() => onSavePlace()} />
             </div>
         </div>

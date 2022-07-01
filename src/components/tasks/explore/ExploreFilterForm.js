@@ -7,7 +7,7 @@ import FormElement from '../../primeCustomComponents/form/FormElement';
 export const ExploreFilterForm = (props) => {
     return (
         <div class="grid">
-            <div className="col-4">
+            <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                 <FormElement
                     label={formFields.PLACE_NAME}
                     fieldType={fieldType.INPUT_TEXT}
@@ -16,7 +16,7 @@ export const ExploreFilterForm = (props) => {
                     }}
                 />
             </div>
-            <div className="col-4">
+            <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                 <FormElement
                     label={formFields.EVENT_NAME}
                     fieldType={fieldType.INPUT_TEXT}
@@ -25,7 +25,7 @@ export const ExploreFilterForm = (props) => {
                     }}
                 />
             </div>
-            <div className="col-4">
+            <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                 <FormElement
                     label={formFields.EVENT_TYPE}
                     fieldType={fieldType.INPUT_DROPDOWN}
@@ -41,7 +41,7 @@ export const ExploreFilterForm = (props) => {
                     }}
                 />
             </div>
-            <div className='col-2'>
+            <div className='col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4'>
                 <Button icon="pi pi-filter" className='p-button-outlined' label="Apply"></Button>
 
             </div>

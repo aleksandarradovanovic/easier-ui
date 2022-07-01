@@ -9,12 +9,12 @@ export const CreateEventWorkflow = (props) => {
     let items = [
         {
             label: "Event information",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-cog",
             component: <EventInformation />
         },
         {
             label: "Images",
-            icon: "pi pi-fw pi-prime",
+            icon: "pi pi-images",
             component: <UploadEventImages />
         }
     ]

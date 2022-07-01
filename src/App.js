@@ -5,22 +5,23 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { loadTranslations, setLocale } from 'react-redux-i18n'
 import PropTypes from 'prop-types'
-import MenubarDemo from './testComponents/MenuBar';
 import CommonModals from './components/primeCustomComponents/modal/CommonModals';
 import { getCookie } from './service/restHandler';
 import { useCreateServiceWrapper } from './service/serviceWrapper';
 import { ServiceRequestData } from './constants/service';
 import AuthenticationService from './service/auth/AuthenticationService';
 import Footer from './components/common/footer/Footer';
+import MenuBar from './components/menu/MenuBar';
+import { handleGetUserDataFromJwt } from './service/auth/handleAuthenticationServiceResponse';
 const App = (props) => {
   const serviceCall = useCreateServiceWrapper();
-
+  const useHandleGetUserDataFromJwt = handleGetUserDataFromJwt()
   const getUserDataFromJwt = () => {
     if (getCookie("jwt")) {
       serviceCall(new ServiceRequestData(
         AuthenticationService.getUserFromToken,
         null,
-        null,
+        useHandleGetUserDataFromJwt,
         null,
         null,
         null
@@ -47,9 +48,11 @@ const App = (props) => {
   return (
     <Fragment>
       <CommonModals />
-      <MenubarDemo />
-      {props.children}
-      <Footer/>
+      <MenuBar />
+      <div className='content'>
+        {props.children}
+      </div>
+      <Footer />
     </Fragment>
   )
 }

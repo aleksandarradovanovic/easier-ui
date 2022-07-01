@@ -91,7 +91,7 @@ export const MyPlaceOverview = (props) => {
         <MyPlaceWrapper>
             <div className='card'>
                 <div className='grid'>
-                    <div className='col-6'>
+                    <div className='col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6'>
                         <div className='grid'>
                             <div className='col-12'>
                                 <h5>
@@ -110,10 +110,10 @@ export const MyPlaceOverview = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className='col-2'>
+                    <div className='col-0 sm:col-0 lg:col-2 md:col-2 xl:col-2'>
 
                     </div>
-                    <div className='col-4'>
+                    <div className='col-12 sm:col-12 lg:col-4 md:col-4 xl:col-4'>
                         <div className='grid'>
                             <div className='col-12'>
                                 <h5>

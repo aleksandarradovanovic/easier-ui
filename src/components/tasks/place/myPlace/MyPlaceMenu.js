@@ -7,6 +7,8 @@ import { getFromAppStore } from '../../../../util/exportUtil';
 import { applicationStore } from '../../../../constants/storeConstants';
 import { useHistory } from 'react-router';
 import { useHandleCallEventService } from '../../event/handleEventServices';
+import { isMobile } from '../../../../util/deviceUtil';
+import { Menubar } from 'primereact/menubar';
 
 export const MyPlaceMenu = (props) => {
     const selectedPlace = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_DATA))
@@ -110,7 +112,7 @@ export const MyPlaceMenu = (props) => {
     ];
     return (
         <Fragment>
-            <Menu model={items} />
+        <Menu model={items} popup={isMobile()}/>
         </Fragment>
 
     )

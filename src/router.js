@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Router, Switch } from 'react-router'
 import App from './App.js'
+import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
-import NavigationComponent from './components/primeCustomComponents/navigation/NavigationComponent.js'
 import CreateEventTask from './components/tasks/event/CreateEventTask.js'
 import EventImagesEdit from './components/tasks/event/EventImagesEdit.js'
 import EventOverview from './components/tasks/event/EventOverview.js'
@@ -19,7 +19,7 @@ import MyPlaceSeatTables from './components/tasks/place/myPlace/MyPlaceSeatTable
 import MyPlaceSeatTablesEdit from './components/tasks/place/myPlace/MyPlaceSeatTablesEdit.js'
 import MyPlaceStaff from './components/tasks/place/myPlace/MyPlaceStaff.js'
 import MyPlaces from './components/tasks/place/MyPlaces.js'
-import CreateEventWorkflow from './components/workflow/CreateEventWorkflow.js'
+import RegisterUser from './components/user/RegisterUser.js'
 import CreatePlaceWorkflow from './components/workflow/CreatePlaceWorkflow.js'
 import { history } from './store.js'
 import AccordionDemo from './testComponents/Accordion.js'
@@ -73,6 +73,8 @@ const router =
         <Route path={'/eventOverview'} component={EventOverview} />
         <Route path={'/eventImagesEdit'} component={EventImagesEdit} />
         <Route path={'/login'} component={Login} />
+        <Route path={'/register'} component={RegisterUser} />
+        <Route path={'/successRegister'} component={SuccessRegisterPanel} />
         <Route path={'/explore'} component={ExploreEvent} />
       </App>
     </Switch>

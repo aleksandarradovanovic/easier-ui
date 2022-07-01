@@ -173,7 +173,7 @@ export const NestedInput = memo(
       } else if (errors && errors[name] && errors[name].type) {
         message = errors[name].type
       }
-      return showErrorMessage && <small className={"p-error"}>{I18n.t("label." + message)}</small>
+      return showErrorMessage && <small className={"p-error"}>{I18n.t("err." + message)}</small>
     };
     let labelDown = true
 

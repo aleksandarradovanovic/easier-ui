@@ -75,7 +75,7 @@ const resolveStatusCode =
                 window.location = ERROR_PAGE_URL_400;
                 break;
             case 403:
-                window.location = ERROR_PAGE_URL_403;
+                window.location = "/login";
                 break;
             case 404:
                 window.location = ERROR_PAGE_URL_404;
@@ -84,17 +84,7 @@ const resolveStatusCode =
                 if (responseJson.data) {
                     responseJson.data.json().then((data) => {
                         if (responseHandler && responseHandler.onError) {
-                            let message = 'err.' + restErrors.GENERAL_SERVER_ERROR
-                            if (data && data.code) {
-                                let params = {}
-                                if (data.params && data.params.length > 0) {
-                                    data.params.forEach((x, index) => (
-                                        params[index] = x
-                                    ));
-                                }
-                                message = I18n.t('err.' + data.code, params)
-                            }
-                            responseHandler.onError(message)
+                            responseHandler.onError(data)
                         }
                     })
                 } else {
@@ -109,7 +99,7 @@ const resolveStatusCode =
                 }
                 break;
             case 500:
-                if (responseJson.data) {
+                if (responseJson && responseJson.data) {
                     responseJson.data.json().then((data) => {
                         if (responseHandler && responseHandler.onError) {
                             responseHandler.onError(data)

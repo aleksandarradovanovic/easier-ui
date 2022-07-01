@@ -3,11 +3,6 @@
 @import "primeflex/primeflex.css";
 @import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
-/*Navigation buttons*/
-.stepButtons{
-    margin-top: 10%;
-}
-
 html {
     height: 100%;
     font-size: 14px;
@@ -22,13 +17,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     margin-bottom: 50px;
     margin: 0;
-    height: 100%;
-
+    min-height: 100%;
 }
 #root{
     height: 100%;
 }
-
+.content {
+    height: 100%;
+    min-height: 57vw;
+}
 h1, h2, h3, h4, h5, h6 {
     margin: 1.5rem 0 1rem 0;
     font-family: inherit;
@@ -220,6 +217,9 @@ img.flag {
 /* StepsDemo.css */
 
 @media screen and (max-width: 640px) {
+    .p-steps.p-component{
+        display: none;
+    }
     .steps-demo .p-steps {
         height: 350px;
     }
@@ -392,12 +392,50 @@ img.flag {
 .p-menubar{
     background-color: #f6b8ff;
 }  
+.p-menubar-end{
+    padding-right: 10px;
+}
 .footer { 
-    bottom: 0;
-    width: 100%;
+    // bottom: 0;
+    // width: 100%;
+    // height: 70px;
+    // text-align: center;
+    // justify-content: center;
+    // background-color: #ea8529;
+    // position: absolute;
+
     height: 70px;
     text-align: center;
     justify-content: center;
     background-color: #ea8529;
-}             
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 150;
+}     
+//steps
+.p-steps.p-component{
+    margin-top: 2%;
+}
+.stepButtons{
+    margin-top: 10%;
+}
+.p-steps-number{
+    display: none;
+}
+.p-steps .p-menuitem-icon{
+    font-size: 2em;
+    color: #ea8529;
+    z-index: 100;
+    background-color: #fff;
+}
+.p-steps .p-highlight .p-menuitem-icon{
+    font-size: 2.5em;
+    color: #ea8529;
+}
+
+.sectionTitle{
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
 

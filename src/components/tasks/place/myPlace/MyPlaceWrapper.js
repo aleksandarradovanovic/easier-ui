@@ -16,10 +16,10 @@ export const MyPlaceWrapper = (props) => {
     return (
         <Fragment>
             <div className='grid'>
-                <div className='col-2'>
+                <div className='col-12 sm:col-12 md:col-2 lg:col-2 xl:col-2' >
                     <MyPlaceMenu selectedPlace={selectedPlace} />
                 </div>
-                <div class="col-8">
+                <div class="col-12 sm:col-12 md:col-8 lg:col-8 xl:col-8">
                     <div className='card'>
                         <h3>
                             <Translate value="label.myPlace" /> {name}

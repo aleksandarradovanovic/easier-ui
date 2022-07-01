@@ -41,7 +41,7 @@ export const EventInformation = (props) => {
                 submitFunction={(data) => console.log(data)}
                 initialValues={initialValues}>
                 <div className='card'>
-                    <h5 className="login">
+                    <h5 className="sectionTitle">
                         <Translate value="label.eventInformation" />
                     </h5>
                     <div class="grid">
@@ -90,7 +90,7 @@ export const EventInformation = (props) => {
                             />
                         </div>
                     </div>
-                    <h5 className="login">
+                    <h5 className="sectionTitle">
                         <Translate value="label.workingTime" />
                     </h5>
                     <div class="grid">

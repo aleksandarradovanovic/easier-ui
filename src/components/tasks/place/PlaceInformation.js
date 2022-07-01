@@ -16,11 +16,11 @@ export const PlaceInformation = (props) => {
                 submitFunction={(data) => console.log(data)}
                 initialValues={initialValues}>
                 <div className='card'>
-                    <h5 className="login">
+                    <h5 className="sectionTitle">
                         <Translate value="label.basicInformations" />
                     </h5>
                     <div class="grid">
-                        <div className="col-4">
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_NAME}
                                 fieldType={fieldType.INPUT_TEXT}
@@ -28,7 +28,7 @@ export const PlaceInformation = (props) => {
                                 fieldProps={{ name: formFields.PLACE_NAME }}
                             />
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_TYPE}
                                 fieldType={fieldType.INPUT_DROPDOWN}
@@ -43,7 +43,7 @@ export const PlaceInformation = (props) => {
                                 }}
                             />
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_DESC}
                                 fieldType={fieldType.TEXT_AREA}
@@ -52,11 +52,11 @@ export const PlaceInformation = (props) => {
                             />
                         </div>
                     </div>
-                    <h5 className="login">
+                    <h5 className="sectionTitle">
                         <Translate value="label.workingTime" />
                     </h5>
                     <div class="grid">
-                        <div className="col-4">
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_WORKING_TIME_FROM}
                                 fieldType={fieldType.INPUT_DATE_PICKER}
@@ -64,7 +64,7 @@ export const PlaceInformation = (props) => {
                                 fieldProps={{ name: formFields.PLACE_WORKING_TIME_FROM, timeOnly: true, hourFormat: "24", dateFormat: "hh:mm" }}
                             />
                         </div>
-                        <div className="col-4">
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_WORKING_TIME_TO}
                                 fieldType={fieldType.INPUT_DATE_PICKER}

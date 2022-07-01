@@ -56,7 +56,7 @@ export const SeatTable = (props) => {
                 submitFunction={(data, resetFunc) => addNewSeat(data, resetFunc)}
                 initialValues={initialValues}>
                 <div className='grid'>
-                    <div className="col-6">
+                    <div className="col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6">
                         <div className='card'>
                             <h5 className="headerItem">
                                 <Translate value="label.addSeatTable" />
@@ -97,7 +97,7 @@ export const SeatTable = (props) => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6">
                         <div className='card'>
                             <h5 className="headerItem">
                                 <Translate value="label.seatTables" />

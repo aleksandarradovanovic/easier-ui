@@ -45,57 +45,58 @@ const PlaceLocationPicker = () => {
     return (
         <Fragment>
             <div className='card'>
-                <h5 className="login">
+                <h5 className="sectionTitle">
                     <Translate value="label.location" />
                 </h5>
-                <div className='grid'>
-                    <div className='col-4'>
-                        <FormWrapper
-                            submitFunction={(data) => console.log(data)}
-                            initialValues={initialValues}>
-                            <div className="col-12">
-                                <FormElement
-                                    label={formFields.PLACE_LOCATION_COUNTRY}
-                                    fieldType={fieldType.INPUT_TEXT}
-                                    required
-                                    fieldProps={{ name: formFields.PLACE_LOCATION_COUNTRY }}
-                                />
-                            </div>
-                            <div className="col-12">
-                                <FormElement
-                                    label={formFields.PLACE_LOCATION_CITY}
-                                    fieldType={fieldType.INPUT_TEXT}
-                                    required
-                                    fieldProps={{ name: formFields.PLACE_LOCATION_CITY }}
-                                />
-                            </div>
-                            <div className="col-12">
-                                <FormElement
-                                    label={formFields.PLACE_LOCATION_STREET_NUMBER}
-                                    fieldType={fieldType.INPUT_TEXT}
-                                    required
-                                    fieldProps={{ name: formFields.PLACE_LOCATION_STREET_NUMBER }}
-                                />
-                            </div>
-                            <div className="col-12">
-                                <FormElement
-                                    label={formFields.PLACE_LOCATION_LAT}
-                                    fieldType={fieldType.INPUT_TEXT}
-                                    required
-                                    fieldProps={{ name: formFields.PLACE_LOCATION_LAT, onChange: (e) => setDefaultLocation({ ...location, lat: e.target.value }) }}
-                                />
-                            </div>
-                            <div className="col-12">
-                                <FormElement
-                                    label={formFields.PLACE_LOCATION_LONG}
-                                    fieldType={fieldType.INPUT_TEXT}
-                                    required
-                                    fieldProps={{ name: formFields.PLACE_LOCATION_LONG }}
-                                />
-                            </div>
-                        </FormWrapper>
+                <FormWrapper
+                    submitFunction={(data) => console.log(data)}
+                    initialValues={initialValues}>
+                    <div className='grid'>
+
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
+                            <FormElement
+                                label={formFields.PLACE_LOCATION_COUNTRY}
+                                fieldType={fieldType.INPUT_TEXT}
+                                required
+                                fieldProps={{ name: formFields.PLACE_LOCATION_COUNTRY }}
+                            />
+                        </div>
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
+                            <FormElement
+                                label={formFields.PLACE_LOCATION_CITY}
+                                fieldType={fieldType.INPUT_TEXT}
+                                required
+                                fieldProps={{ name: formFields.PLACE_LOCATION_CITY }}
+                            />
+                        </div>
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
+                            <FormElement
+                                label={formFields.PLACE_LOCATION_STREET_NUMBER}
+                                fieldType={fieldType.INPUT_TEXT}
+                                required
+                                fieldProps={{ name: formFields.PLACE_LOCATION_STREET_NUMBER }}
+                            />
+                        </div>
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
+                            <FormElement
+                                label={formFields.PLACE_LOCATION_LAT}
+                                fieldType={fieldType.INPUT_TEXT}
+                                required
+                                fieldProps={{ name: formFields.PLACE_LOCATION_LAT, onChange: (e) => setDefaultLocation({ ...location, lat: e.target.value }) }}
+                            />
+                        </div>
+                        <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
+                            <FormElement
+                                label={formFields.PLACE_LOCATION_LONG}
+                                fieldType={fieldType.INPUT_TEXT}
+                                required
+                                fieldProps={{ name: formFields.PLACE_LOCATION_LONG }}
+                            />
+                        </div>
                     </div>
-                    {/* <div className='col-8'>
+
+                </FormWrapper>
+                {/* <div className='col-8'>
                         <MapPicker defaultLocation={defaultLocation}
                             zoom={zoom}
                             mapTypeId="roadmap"
@@ -104,7 +105,6 @@ const PlaceLocationPicker = () => {
                             onChangeZoom={handleChangeZoom}
                             apiKey='AIzaSyAkBhTU6Tc8FNdu64ZRG4rPm2bin7H7OOI' />
                     </div> */}
-                </div>
 
 
 

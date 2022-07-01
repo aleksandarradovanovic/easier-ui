@@ -4,7 +4,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { addErrorsToGlobalForm, addValuesToGlobalForm } from "../../../actions/globalFormActions";
 import { getGlobalFormValues, getGlobalFormValuesErrors } from "../../../util/globalFormUtil";
 
-const FormWrapper = ({ children, submitFunction, initialValues, formRules }) => {
+const FormWrapper = ({ children, submitFunction, initialValues, formRules, mode }) => {
   let dispatch = useDispatch();
   let initialFormValues = {}
   let localFormElements = []
@@ -19,7 +19,7 @@ const FormWrapper = ({ children, submitFunction, initialValues, formRules }) => 
   if (values) {
     initialFormValues = { ...initialFormValues, ...values }
   }
-  const { control, formState, formState: { errors }, getValues, trigger, handleSubmit, setValue, reset } = useForm({ defaultValues: initialFormValues, mode: 'all' });
+  const { control, formState, formState: { errors }, getValues, trigger, handleSubmit, setValue, reset } = useForm({ defaultValues: initialFormValues, mode: mode ? mode : 'all' });
   const onSubmit = (data) => {
     dispatch(addValuesToGlobalForm(data))
     if (submitFunction) {

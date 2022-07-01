@@ -18,8 +18,14 @@ export const fieldType = Object.freeze({
   SLIDER:'slider'
 })
 export const formFields = Object.freeze({
+  FIRST_NAME: 'firstName',
+  LAST_NAME: 'lastName',
+  EMAIL: 'email',
+  DATE_OF_BIRTH: 'dateOfBirth',
+  PHONE_NUMBER: 'phoneNumber',
   USERNAME: 'username',
   PASSWORD: 'password',
+  PASSWORD_REPEATED: 'passwordRepeat',
   PLACE_NAME:'placeName',
   PLACE_TYPE:'placeType',
   PLACE_DESC:'placeDescription',
