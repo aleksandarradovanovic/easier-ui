@@ -11,6 +11,9 @@ import { fieldType, formFields } from '../../../constants/form';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import ExploreFilterForm from './ExploreFilterForm';
+import { useHistory } from 'react-router';
+import { Tooltip } from 'primereact/tooltip';
+import { getCookie } from '../../../service/restHandler';
 
 export const ExploreEvent = (props) => {
     // const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
@@ -23,7 +26,9 @@ export const ExploreEvent = (props) => {
     const rows = useRef(10);
     const datasource = useRef(null);
     const isMounted = useRef(false);
+    const history = useHistory()
     const dispatch = useDispatch();
+
     const getEventData = (pageProp, pageSizeProp, filterData) => {
         let page = pageProp || 1
         let pageSize = pageSizeProp || 10
@@ -99,6 +104,12 @@ export const ExploreEvent = (props) => {
         getEventData(event.page + 1)
         setLoading(true);
     }
+    const getEventDataForReservation = (id) => {
+        handleCallEventService.handleGetEventService(id, () => {
+            history.push('/reservation')
+
+        })
+    }
     const renderListItem = (data) => {
         return (
             <div className="col-12">
@@ -115,7 +126,7 @@ export const ExploreEvent = (props) => {
                         <span className="">
                             <i className="pi pi-calendar product-category-icon"></i>
                             {moment(data.startTime).format('DD/MM/YYYY, h:mm') + " - " + moment(data.endTime).format('DD/MM/YYYY, h:mm')} </span>
-                        <Button icon="pi pi-calendar-plus" className='p-button-outlined' label="Reserve" disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
+                        <Button icon="pi pi-calendar-plus" className='p-button-outlined' label="Reserve" disabled={!getCookie("jwt")} tooltip={!getCookie("jwt") ? "Login to reserve" : 'Reserve'} onClick={() => getEventDataForReservation(data.id)} ></Button>
                     </div>
                 </div>
             </div>
@@ -145,7 +156,7 @@ export const ExploreEvent = (props) => {
                         <span className="">
                             <i className="pi pi-calendar product-category-icon"></i>
                             {moment(data.startTime).format('DD/MM/YYYY, h:mm') + " - " + moment(data.endTime).format('DD/MM/YYYY, h:mm')} </span>
-                        <Button icon="pi pi-calendar-plus" label="Reserve" className='p-button-outlined' disabled={data.inventoryStatus === 'OUTOFSTOCK'}></Button>
+                        <Button icon="pi pi-calendar-plus" className='p-button-outlined' label="Reserve" disabled={!getCookie("jwt")} tooltip={!getCookie("jwt") ? "Login to reserve" : 'Reserve'} onClick={() => getEventDataForReservation(data.id)} ></Button>
                     </div>
                 </div>
             </div>

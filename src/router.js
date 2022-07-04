@@ -20,6 +20,7 @@ import MyPlaceSeatTables from './components/tasks/place/myPlace/MyPlaceSeatTable
 import MyPlaceSeatTablesEdit from './components/tasks/place/myPlace/MyPlaceSeatTablesEdit.js'
 import MyPlaceStaff from './components/tasks/place/myPlace/MyPlaceStaff.js'
 import MyPlaces from './components/tasks/place/MyPlaces.js'
+import CreateReservationTask from './components/tasks/reservation/CreateReservationTask.js'
 import RegisterUser from './components/user/RegisterUser.js'
 import CreatePlaceWorkflow from './components/workflow/CreatePlaceWorkflow.js'
 import { history } from './store.js'
@@ -78,6 +79,7 @@ const router =
         <Route path={'/register'} component={RegisterUser} />
         <Route path={'/successRegister'} component={SuccessRegisterPanel} />
         <Route path={'/explore'} component={ExploreEvent} />
+        <Route path={'/reservation'} component={CreateReservationTask} />
       </App>
     </Switch>
   </Router>

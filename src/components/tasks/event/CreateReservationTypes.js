@@ -22,8 +22,10 @@ export const CreateReservationTypes = (props) => {
         };
     }, [])
     let initialValues = {
-        [formFields.SEAT_TABLE_TYPE]: "",
-        [formFields.SEAT_TABLE_ID]: "",
+        [formFields.RESERVATION_TYPE_NAME]: "",
+        [formFields.RESERVATION_TYPE_PRICE]: "",
+        [formFields.RESERVATION_TYPE_MAX_NUMBER_OF_GUESTS]: "",
+        [formFields.RESERVATION_TYPE_REMARK]: "",
     };
     let columns = [
         {

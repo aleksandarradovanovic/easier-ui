@@ -16,6 +16,7 @@ export const useHandleCallEventService = () => {
     const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
     const selectedEvent = useSelector((state) => getFromAppStore(state, applicationStore.EVENT_DATA))
     const selectedReservationType = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_RESERVATION_TYPE))
+    const selectedEventMap = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_MAP))
 
     const formValues = useSelector((state) => getGlobalFormValues(state))
 
@@ -28,6 +29,25 @@ export const useHandleCallEventService = () => {
 
 
     const handleCallCreateEventService = () => {
+        let reservationTypeDtosArray = selectedReservationType.map(function(item){
+            let seatsForType = []
+            if(formValues){
+                Object.keys(formValues).forEach(element => {
+                    if(element.includes(formFields.RESERVATION_TYPE_NAME)){
+                        if(element[element.length-1] && !isNaN(element[element.length-1]) && formValues[element] == item.name){
+                            seatsForType.push({
+                                seatTableId:  parseInt(element[element.length-1]) 
+                            })
+                        }
+                    }
+                });
+                
+            }
+            return {
+                ...item,
+                availableSeatTablesDto:seatsForType
+            }
+        })
         let eventObject = {
             name: formValues[formFields.EVENT_NAME],
             type: formValues[formFields.EVENT_TYPE],
@@ -36,7 +56,8 @@ export const useHandleCallEventService = () => {
             endTime: formValues[formFields.EVENT_TIME_TO],
             imagesDtos: selectedImages,
             placeId: formValues[formFields.EVENT_PLACE_NAME],
-            reservationTypeDtos:selectedReservationType 
+            eventPlaceMap:selectedEventMap,
+            reservationTypeDtos:reservationTypeDtosArray 
 
         }
         serviceCall(new ServiceRequestData(
@@ -65,7 +86,7 @@ export const useHandleCallEventService = () => {
             null
         ))
     }
-    const handleCallGetEventService = (id) => {
+    const handleCallGetEventService = (id, additionalOnSuccess) => {
         let requestData = {
             id: id
         }
@@ -75,7 +96,11 @@ export const useHandleCallEventService = () => {
             useHandleSuccessGetEventResponse,
             null,
             () => {
-                history.push('/eventOverview')
+                if(additionalOnSuccess){
+                    additionalOnSuccess()
+                } else {
+                    history.push('/eventOverview')
+                }
             },
             null
         ))

@@ -51,6 +51,10 @@ export const formFields = Object.freeze({
   RESERVATION_TYPE_REMARK:'reservationTypeRemark',
   RESERVATION_TYPE_MAX_NUMBER_OF_GUESTS:'reservationTypeMaxNumberOfGuests',
 
+  RESERVATION_NAME_ON:'reservationNameOn',
+  RESERVATION_EMAIL:'reservationEmail',
+  RESERVATION_NUMBER_OF_GUESTS:'reservationNumberOfGuests',
+
 
 
 })

@@ -4,6 +4,7 @@ import EventInformation from '../tasks/event/EventInformation';
 import UploadEventImages from '../tasks/event/UploadEventImages';
 import { useHandleCallEventService } from '../tasks/event/handleEventServices';
 import CreateReservationTypes from '../tasks/event/CreateReservationTypes';
+import ManageSeatTables from '../tasks/event/ManageSeatTables';
 export const CreateEventWorkflow = (props) => {
     const handleGetEventService = useHandleCallEventService()
 
@@ -22,6 +23,11 @@ export const CreateEventWorkflow = (props) => {
             label: "Reservation Types",
             icon: "pi pi-images",
             component: <CreateReservationTypes />
+        },
+        {
+            label: "Manage seat/tables",
+            icon: "pi pi-th-large",
+            component: <ManageSeatTables />
         }
     ]
     const onSaveEvent = () => {

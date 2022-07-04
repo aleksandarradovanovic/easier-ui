@@ -29,8 +29,8 @@ export const handleErrorLoginResponse = () => {
 export const handleGetUserDataFromJwt = () => {
     const dispatch = useDispatch()
     const handleResponse = (response) => {
-        console.log(response, 'response');
         if (response) {
+            dispatch(addToAppStore(applicationStore.USER_DATA, response));
             dispatch(addToAppStore(applicationStore.USER_ACTOR, response.actorName));
             dispatch(addToAppStore(applicationStore.USER_ROLES, response.rolesDto));
         }
