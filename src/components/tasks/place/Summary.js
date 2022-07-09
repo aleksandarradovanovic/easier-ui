@@ -61,29 +61,23 @@ export const Summary = (props) => {
     }
     return (
         <Fragment>
-            <div className='grid'>
-                <div className='card'>
-                    <h5 className="headerItem">
-                        <Translate value="label.summary data" />
+                    <h5 className="">
+                        <Translate value="label.summary" />
                     </h5>
                     <div className='grid'>
-                        <div className='col-12'>
+                        <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
                             <h5>
-                                <Translate value="label.basicInformations" />
+                                <Translate value="label.basicInformation" />
                             </h5>
                             <div>{basicInformationsTemplate()}</div>
                         </div>
-                        <div className='col-12'>
+                        <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
                             <h5>
                                 <Translate value="label.location" />
                             </h5>
                             <div>{locationTemplate()}</div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
         </Fragment>
 
     )

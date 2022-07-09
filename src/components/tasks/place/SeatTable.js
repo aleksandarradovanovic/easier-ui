@@ -2,7 +2,8 @@ import { Button } from 'primereact/button';
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { I18n, Translate } from 'react-redux-i18n';
-import { addToAppStore } from '../../../actions';
+import { addToAppStore, openModal } from '../../../actions';
+import { modalIDs } from '../../../constants/environment';
 import { fieldType, formFields } from '../../../constants/form';
 import { applicationStore } from '../../../constants/storeConstants';
 import { getFromAppStore } from '../../../util/exportUtil';
@@ -15,12 +16,6 @@ export const SeatTable = (props) => {
     const [seatTablesList, setSeatTablesList] = useState(selectedSeatTables || []);
 
     const dispatch = useDispatch()
-    useEffect(() => {
-        return () => {
-            dispatch(addToAppStore(applicationStore.SELECTED_SEAT_TABLE, seatTablesList))
-
-        };
-    }, [])
     let initialValues = {
         [formFields.SEAT_TABLE_TYPE]: "",
         [formFields.SEAT_TABLE_ID]: "",
@@ -42,13 +37,19 @@ export const SeatTable = (props) => {
     }
     const addNewSeat = (data, resetFunc) => {
         let newSeatTableList = seatTablesList
-        newSeatTableList.push({
-            type: data[formFields.SEAT_TABLE_TYPE],
-            id: data[formFields.SEAT_TABLE_ID]
-        })
-        setSeatTablesList([...newSeatTableList])
-        dispatch(addToAppStore(applicationStore.SELECTED_SEAT_TABLE, newSeatTableList))
-        resetFunc()
+        if(seatTablesList.findIndex(x=>x.id == data[formFields.SEAT_TABLE_ID]) == -1){
+            newSeatTableList.push({
+                type: data[formFields.SEAT_TABLE_TYPE],
+                id: data[formFields.SEAT_TABLE_ID]
+            })
+            setSeatTablesList([...newSeatTableList])
+            dispatch(addToAppStore(applicationStore.SELECTED_SEAT_TABLE, newSeatTableList))
+            resetFunc()
+        } else {
+            dispatch(addToAppStore(applicationStore.ERROR_MESSAGE, 'err.seatTableWithNumberIsAlreadyAdded'));
+            dispatch(openModal(modalIDs.ERROR));
+        }
+
     }
     return (
         <Fragment>

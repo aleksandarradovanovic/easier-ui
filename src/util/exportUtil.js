@@ -66,6 +66,9 @@ export const getFieldWarning = (store, fieldName, formName) => {
 export const getFromAppStore = (store, key) => {
   return store.applicationReducer ? store.applicationReducer.map.get(key) : null
 }
+export const getFromGlobalStore = (store, key) => {
+  return store.globalReducer ? store.globalReducer.map.get(key) : null
+}
 
 export const getActiveStepID = (store) => {
   return store.mbNavigationReducer ? store.mbNavigationReducer.activeStepID : null

@@ -5,24 +5,30 @@ import UploadEventImages from '../tasks/event/UploadEventImages';
 import { useHandleCallEventService } from '../tasks/event/handleEventServices';
 import CreateReservationTypes from '../tasks/event/CreateReservationTypes';
 import ManageSeatTables from '../tasks/event/ManageSeatTables';
+import { useHandleCreateEventValidation } from './validation/handleEventValidation';
 export const CreateEventWorkflow = (props) => {
     const handleGetEventService = useHandleCallEventService()
-
+    const handleCreateEventValidation = useHandleCreateEventValidation()
     let items = [
         {
             label: "Event information",
             icon: "pi pi-cog",
-            component: <EventInformation />
+            component: <EventInformation />,
+            isValid: handleCreateEventValidation.isBasicInformationValid()
         },
         {
             label: "Images",
             icon: "pi pi-images",
-            component: <UploadEventImages />
+            component: <UploadEventImages />,
+            isValid: handleCreateEventValidation.isImageValid()
+
         },
         {
             label: "Reservation Types",
             icon: "pi pi-images",
-            component: <CreateReservationTypes />
+            component: <CreateReservationTypes />,
+            isValid: handleCreateEventValidation.isReservationTypeValid()
+
         },
         {
             label: "Manage seat/tables",

@@ -15,12 +15,6 @@ export const CreateReservationTypes = (props) => {
     const [reservationTypeList, setReservationTypeList] = useState(selectedType || []);
 
     const dispatch = useDispatch()
-    useEffect(() => {
-        return () => {
-            dispatch(addToAppStore(applicationStore.SELECTED_RESERVATION_TYPE, reservationTypeList))
-
-        };
-    }, [])
     let initialValues = {
         [formFields.RESERVATION_TYPE_NAME]: "",
         [formFields.RESERVATION_TYPE_PRICE]: "",

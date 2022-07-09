@@ -14,6 +14,7 @@ import ExploreFilterForm from './ExploreFilterForm';
 import { useHistory } from 'react-router';
 import { Tooltip } from 'primereact/tooltip';
 import { getCookie } from '../../../service/restHandler';
+import { I18n } from 'react-redux-i18n';
 
 export const ExploreEvent = (props) => {
     // const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
@@ -156,7 +157,8 @@ export const ExploreEvent = (props) => {
                         <span className="">
                             <i className="pi pi-calendar product-category-icon"></i>
                             {moment(data.startTime).format('DD/MM/YYYY, h:mm') + " - " + moment(data.endTime).format('DD/MM/YYYY, h:mm')} </span>
-                        <Button icon="pi pi-calendar-plus" className='p-button-outlined' label="Reserve" disabled={!getCookie("jwt")} tooltip={!getCookie("jwt") ? "Login to reserve" : 'Reserve'} onClick={() => getEventDataForReservation(data.id)} ></Button>
+                        <Button icon="pi pi-calendar-plus" className='p-button-outlined' label={!getCookie("jwt") ? I18n.t('action.loginToReserve') : I18n.t('action.reserve')} onClick={() => {!getCookie("jwt") ? history.push('/login') : getEventDataForReservation(data.id)}} ></Button>
+                        
                     </div>
                 </div>
             </div>

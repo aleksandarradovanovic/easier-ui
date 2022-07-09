@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Router, Switch } from 'react-router'
 import App from './App.js'
+import SuccessPlaceCreated from './components/common/SuccessPlaceCreated.js'
 import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
 import CreateEventTask from './components/tasks/event/CreateEventTask.js'
@@ -19,6 +20,7 @@ import MyPlaceOverview from './components/tasks/place/myPlace/MyPlaceOverview.js
 import MyPlaceSeatTables from './components/tasks/place/myPlace/MyPlaceSeatTables.js'
 import MyPlaceSeatTablesEdit from './components/tasks/place/myPlace/MyPlaceSeatTablesEdit.js'
 import MyPlaceStaff from './components/tasks/place/myPlace/MyPlaceStaff.js'
+import MyPlaceStaffEdit from './components/tasks/place/myPlace/MyPlaceStaffEdit.js'
 import MyPlaces from './components/tasks/place/MyPlaces.js'
 import CreateReservationTask from './components/tasks/reservation/CreateReservationTask.js'
 import RegisterUser from './components/user/RegisterUser.js'
@@ -69,6 +71,7 @@ const router =
         <Route path={'/myPlaceBasicInformationEdit'} component={MyPlaceBasicInformationEdit} />
         <Route path={'/myPlaceLocationEdit'} component={MyPlaceLocationEdit} />
         <Route path={'/myPlaceStaff'} component={MyPlaceStaff} />
+        <Route path={'/myPlaceStaffEdit'} component={MyPlaceStaffEdit} />
         <Route path={'/myPlaceEvents'} component={MyPlaceEvents} />
         <Route path={'/createPlaceEvent'} component={CreateMyPlaceEvent} />
         <Route path={'/createEvent'} component={CreateEventTask} />
@@ -78,6 +81,7 @@ const router =
         <Route path={'/login'} component={Login} />
         <Route path={'/register'} component={RegisterUser} />
         <Route path={'/successRegister'} component={SuccessRegisterPanel} />
+        <Route path={'/successCreatedPlace'} component={SuccessPlaceCreated} />
         <Route path={'/explore'} component={ExploreEvent} />
         <Route path={'/reservation'} component={CreateReservationTask} />
       </App>

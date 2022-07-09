@@ -8,8 +8,10 @@ import UploadPlaceImages from '../tasks/place/UploadPlaceImages';
 import { useHandleCallPlaceService } from '../tasks/place/myPlace/handlePlaceServices';
 import { useDispatch } from 'react-redux';
 import { clearAppStore } from '../../actions';
+import { useHandleCreatePlaceValidation } from './validation/createPlaceValidation';
 export const CreatePlaceWorkflow = (props) => {
     const handleGetPlaceService = useHandleCallPlaceService()
+    const createPlaceValidation = useHandleCreatePlaceValidation()
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(clearAppStore())
@@ -18,22 +20,29 @@ export const CreatePlaceWorkflow = (props) => {
         {
             label: "Basic informations",
             icon: "pi pi-cog",
-            component: <PlaceInformation />
+            component: <PlaceInformation />,
+            isValid: createPlaceValidation.isBasicInformationValid()
         },
         {
             label: "Location",
             icon: "pi pi-map-marker",
-            component: <PlaceLocationPicker />
+            component: <PlaceLocationPicker />,
+            isValid: createPlaceValidation.isLocationValid()
+
         },
         {
             label: "Images",
             icon: "pi pi-images",
-            component: <UploadPlaceImages />
+            component: <UploadPlaceImages />,
+            isValid: createPlaceValidation.isImageValid()
+
         },
         {
             label: "Seat/table",
             icon: "pi pi-th-large",
-            component: <SeatTable />
+            component: <SeatTable />,
+            isValid: createPlaceValidation.isSeatTableValid()
+
         },
         {
             label: "Summary",
@@ -48,7 +57,7 @@ export const CreatePlaceWorkflow = (props) => {
     return (
         <div class="grid">
             <div class="col-12 lg:col-8 lg:col-offset-2">
-                <NavigationComponent items={items} onSave={() => onSavePlace()} />
+                <NavigationComponent items={items} onSave={() => onSavePlace()} readOnly = {true}/>
             </div>
         </div>
     )

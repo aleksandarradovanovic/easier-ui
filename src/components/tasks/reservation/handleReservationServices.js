@@ -4,16 +4,16 @@ import { addToAppStore, openModal } from "../../../actions";
 import { modalIDs } from "../../../constants/environment";
 import { formFields } from "../../../constants/form";
 import { ServiceRequestData } from "../../../constants/service";
-import { applicationStore } from "../../../constants/storeConstants";
+import { applicationStore, globalStore } from "../../../constants/storeConstants";
 import ReservationService from "../../../service/reservation/ReservationService";
 import { useCreateServiceWrapper } from "../../../service/serviceWrapper";
-import { getFromAppStore } from "../../../util/exportUtil";
+import { getFromAppStore, getFromGlobalStore } from "../../../util/exportUtil";
 
 export const useHandleCallReservationService = () => {
     const history = useHistory();
     const dispatch = useDispatch()
     const serviceCall = useCreateServiceWrapper();
-    const userData = useSelector((state) => getFromAppStore(state, applicationStore.USER_DATA))
+    const userData = useSelector((state) => getFromGlobalStore(state, globalStore.USER_DATA))
 
     const handleCallCreateReservationService = (data, type, seatTables) => {
         let seatTablesArray = []

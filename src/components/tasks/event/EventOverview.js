@@ -9,6 +9,7 @@ import { getFromAppStore } from '../../../util/exportUtil';
 import { applicationStore } from '../../../constants/storeConstants';
 import MyPlaceWrapper from '../place/myPlace/MyPlaceWrapper';
 import { useHandleCallEventService } from './handleEventServices';
+import { Image } from 'primereact/image';
 
 export const EventOverview = (props) => {
 
@@ -62,11 +63,21 @@ export const EventOverview = (props) => {
                         <div className='grid'>
                             <div className='col-12'>
                                 <h5>
-                                    <Translate value="label.basicInformations" />
+                                    <Translate value="label.basicInformation" />
                                     <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => editEventInformation()} />
 
                                 </h5>
                                 <div>{basicInformationsTemplate()}</div>
+                            </div>
+                            <div className='col-12'>
+                                <h5>
+                                    <Translate value="label.seatTablesMap" />
+                                    <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => editEventInformation()} />
+
+                                </h5>
+                                <div className="map-image-container">
+                                    {selectedEvent && selectedEvent.eventPlaceMap && <Image src={selectedEvent.eventPlaceMap} alt={"uploadedMap"} preview />}
+                                </div>
                             </div>
                         </div>
                     </div>

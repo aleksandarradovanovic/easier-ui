@@ -61,8 +61,7 @@ export const useHandleCallPlaceService = () => {
             null,
             null,
             () => {
-                dispatch(addToAppStore(applicationStore.MESSAGE_MODAL_MESSAGE, 'message.Place created'));
-                dispatch(openModal(modalIDs.MESSAGE_MODAL));
+                history.push('/successCreatedPlace')
             },
             null
         ))

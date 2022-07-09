@@ -35,3 +35,24 @@ export const clearAppStore = () => {
     type: CLEAR_APP_STORE
   })
 }
+export const ADD_GLOBAL_STORE_VALUE = 'ADD_GLOBAL_STORE_VALUE'
+export const addToGlobalStore = (key, value) => {
+  return ({
+    type: ADD_GLOBAL_STORE_VALUE,
+    key: key,
+    value: value
+  })
+}
+export const REMOVE_GLOBAL_STORE_VALUE = 'REMOVE_GLOBAL_STORE_VALUE'
+export const removeFromGlobalStore = (key) => {
+  return ({
+    type: REMOVE_GLOBAL_STORE_VALUE,
+    key: key
+  })
+}
+export const CLEAR_GLOBAL_STORE = 'CLEAR_GLOBAL_STORE'
+export const clearGlobalStore = () => {
+  return ({
+    type: CLEAR_GLOBAL_STORE
+  })
+}

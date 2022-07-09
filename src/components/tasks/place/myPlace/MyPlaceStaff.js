@@ -7,12 +7,15 @@ import { Translate } from 'react-redux-i18n';
 import { Button } from 'primereact/button';
 import SimpleTable from '../../../primeCustomComponents/table/SimpleTable';
 import { useHandleCallPlaceService } from './handlePlaceServices';
+import { useHistory } from 'react-router';
 
 export const MyPlaceStaff = (props) => {
     const placeStaff = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_STAFF))
     const handleCallPlaceService = useHandleCallPlaceService()
+    const history = useHistory();
     const editStaff = () => {
-        // handleCallPlaceService.handleGetPlaceSeatTableService(true)
+        history.push('/myPlaceStaffEdit')
+
 
     }
     useEffect(() => {

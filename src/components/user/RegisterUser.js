@@ -20,7 +20,7 @@ const RegisterUser = (props) => {
     if (data != null) {
       const createUserParams = {
         ...data,
-        actorId:2
+        actorId: 2
       };
       serviceCall(new ServiceRequestData(
         UserService.createUser,
@@ -46,7 +46,7 @@ const RegisterUser = (props) => {
     <FormWrapper
       submitFunction={(data) => submitLogin(data)}
       initialValues={initialValues}
-      // mode={"onSubmit"}
+    // mode={"onSubmit"}
     >
       <div className="flex align-items-center justify-content-center">
         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
@@ -58,7 +58,7 @@ const RegisterUser = (props) => {
           </div>
 
           <div className="grid">
-          <div className="col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6">
+            <div className="col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6">
               <FormElement
                 label={I18n.t('label.' + formFields.FIRST_NAME)}
                 fieldType={fieldType.INPUT_TEXT}

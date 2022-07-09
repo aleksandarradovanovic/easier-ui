@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Translate } from 'react-redux-i18n';
+import { I18n, Translate } from 'react-redux-i18n';
 import { fieldType, formFields } from '../../../constants/form';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
@@ -17,7 +17,7 @@ export const PlaceInformation = (props) => {
                 initialValues={initialValues}>
                 <div className='card'>
                     <h5 className="sectionTitle">
-                        <Translate value="label.basicInformations" />
+                        <Translate value="label.basicInformation" />
                     </h5>
                     <div class="grid">
                         <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
@@ -31,15 +31,13 @@ export const PlaceInformation = (props) => {
                         <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                             <FormElement
                                 label={formFields.PLACE_TYPE}
-                                fieldType={fieldType.INPUT_DROPDOWN}
+                                fieldType={fieldType.INPUT_TEXT}
                                 required
                                 fieldProps=
                                 {{
                                     name: formFields.PLACE_TYPE,
-                                    options: [
-                                        { label: "Bar", value: "bar" },
-                                        { label: "Restaurant", value: "restaurant" },
-                                    ]
+                                    tooltip:I18n.t("message.placeTypeTip")
+                                 
                                 }}
                             />
                         </div>

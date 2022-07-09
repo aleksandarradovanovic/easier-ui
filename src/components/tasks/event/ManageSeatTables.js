@@ -10,7 +10,7 @@ import { applicationStore } from '../../../constants/storeConstants';
 import { getFromAppStore } from '../../../util/exportUtil';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
-
+import { Image } from 'primereact/image';
 export const ManageSeatTables = (props) => {
     const placeData = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_DATA))
     const selectedReservationTypes = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_RESERVATION_TYPE))
@@ -74,8 +74,8 @@ export const ManageSeatTables = (props) => {
                     </h5>
                     <FileUpload mode="basic" name="demo[]" accept="image/*" onSelect={uploadMap} />
                     <br/>
-                    <div className="image-container">
-                    {uploadedMap && <img src = {uploadedMap} maxWidth = {"20vw"}/>}
+                    <div className="map-image-container">
+                    {uploadedMap &&  <Image src={uploadedMap} alt={"uploadedMap"} preview />}
 
                     </div>
 

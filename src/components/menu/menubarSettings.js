@@ -2,13 +2,13 @@ import { Button } from "primereact/button";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { placeActor, publicActor } from "../../constants/serverConstants";
-import { applicationStore } from "../../constants/storeConstants";
+import {  globalStore } from "../../constants/storeConstants";
 import { getCookie } from "../../service/restHandler";
-import { getFromAppStore } from "../../util/exportUtil";
+import { getFromAppStore, getFromGlobalStore } from "../../util/exportUtil";
 
 export const useMenubarSettings = () => {
-    const userActor = useSelector((state) => getFromAppStore(state, applicationStore.USER_ACTOR))
-    const userRoles = useSelector((state) => getFromAppStore(state, applicationStore.USER_ROLES))
+    const userActor = useSelector((state) => getFromGlobalStore(state, globalStore.USER_ACTOR))
+    const userRoles = useSelector((state) => getFromGlobalStore(state, globalStore.USER_ROLES))
 
     const history = useHistory();
     let jwt = getCookie("jwt");

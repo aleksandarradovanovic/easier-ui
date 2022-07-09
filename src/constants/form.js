@@ -26,6 +26,7 @@ export const formFields = Object.freeze({
   USERNAME: 'username',
   PASSWORD: 'password',
   PASSWORD_REPEATED: 'passwordRepeat',
+  POSITION: 'position',
   PLACE_NAME:'placeName',
   PLACE_TYPE:'placeType',
   PLACE_DESC:'placeDescription',

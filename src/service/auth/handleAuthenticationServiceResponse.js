@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { addToAppStore, openModal } from "../../actions";
+import { addToAppStore, addToGlobalStore, openModal } from "../../actions";
 import { modalIDs } from "../../constants/environment";
-import { applicationStore } from "../../constants/storeConstants";
+import { applicationStore, globalStore } from "../../constants/storeConstants";
 
 export const handleSuccessLoginResponse = () => {
 
@@ -30,9 +30,9 @@ export const handleGetUserDataFromJwt = () => {
     const dispatch = useDispatch()
     const handleResponse = (response) => {
         if (response) {
-            dispatch(addToAppStore(applicationStore.USER_DATA, response));
-            dispatch(addToAppStore(applicationStore.USER_ACTOR, response.actorName));
-            dispatch(addToAppStore(applicationStore.USER_ROLES, response.rolesDto));
+            dispatch(addToGlobalStore(globalStore.USER_DATA, response));
+            dispatch(addToGlobalStore(globalStore.USER_ACTOR, response.actorName));
+            dispatch(addToGlobalStore(globalStore.USER_ROLES, response.rolesDto));
         }
     }
 
