@@ -44,8 +44,8 @@ export const fetchJson = (url, options = {}, contentTypeReturned, responseHandle
     }
 
     requestHeaders.set('Authorization', getCookie('jwt'));
-
-    return fetch(`${REST_ROOT_ENDPOINT}${url}`, { ...options, headers: requestHeaders })
+    try {
+        return fetch(`${REST_ROOT_ENDPOINT}${url}`, { ...options, headers: requestHeaders })
         .then((response) => {
             return handleServerResponse(response);
         }
@@ -57,6 +57,12 @@ export const fetchJson = (url, options = {}, contentTypeReturned, responseHandle
                 responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
             }
         })
+    } catch (error) {
+        if (responseHandler && responseHandler.onError) {
+            responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)
+        }
+    }
+
 }
 const handleServerResponse =
     (responseJson) => {
@@ -109,6 +115,9 @@ const resolveStatusCode =
                         responseHandler.onError('err.' + restErrors.SERVICE_UNAVAILABLE)
                     }
                 }
+                 if (responseHandler && responseHandler.onError) {
+                        responseHandler.onError('err.' + restErrors.SERVICE_UNAVAILABLE)
+                    }
                 break;
             case 503:
                 if (responseHandler && responseHandler.onError) {
@@ -117,7 +126,6 @@ const resolveStatusCode =
                 break;
             case 200:
             case 201:
-            case 204:
                 if (responseJson.data) {
                     responseJson.data.json().then((data) => {
                         if (responseHandler && responseHandler.onSuccess) {
@@ -126,6 +134,11 @@ const resolveStatusCode =
                     })
                 }
                 break;
+                case 204:
+                    if (responseHandler && responseHandler.onSuccess) {
+                        responseHandler.onSuccess()
+                    }
+                    break;
             default:
                 if (responseHandler && responseHandler.onError) {
                     responseHandler.onError('err.' + restErrors.GENERAL_SERVER_ERROR)

@@ -74,6 +74,13 @@ export const useMenubarSettings = () => {
                             command: () => {
                                 history.push('/explore')
                             }
+                        },
+                        {
+                            label: "My reservations",
+                            icon: "pi pi-fw pi-ticket",
+                            command: () => {
+                                history.push('/myReservations')
+                            }
                         }
                     ]
                     break;

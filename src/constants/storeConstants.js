@@ -19,7 +19,8 @@ export const applicationStore = Object.freeze({
   USER_ROLES:"userRoles",
   USER_DATA:"userData",
   SELECTED_RESERVATION_TYPE: 'selectedReservationType',
-  SELECTED_EVENT_MAP:'selectedEventMap'
+  SELECTED_EVENT_MAP:'selectedEventMap',
+  RESERVATION_DATA:'reservationData'
 });
 export const globalStore = Object.freeze({
   USER_ACTOR:"userActor",

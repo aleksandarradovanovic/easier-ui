@@ -5,6 +5,7 @@ import { modalIDs } from "../../../constants/environment";
 import { formFields } from "../../../constants/form";
 import { ServiceRequestData } from "../../../constants/service";
 import { applicationStore, globalStore } from "../../../constants/storeConstants";
+import { handleSuccessGetReservationResponse } from "../../../service/reservation/handleReservationServiceResponse";
 import ReservationService from "../../../service/reservation/ReservationService";
 import { useCreateServiceWrapper } from "../../../service/serviceWrapper";
 import { getFromAppStore, getFromGlobalStore } from "../../../util/exportUtil";
@@ -14,7 +15,7 @@ export const useHandleCallReservationService = () => {
     const dispatch = useDispatch()
     const serviceCall = useCreateServiceWrapper();
     const userData = useSelector((state) => getFromGlobalStore(state, globalStore.USER_DATA))
-
+    const useHandleSuccessGetReservationResponse = handleSuccessGetReservationResponse()
     const handleCallCreateReservationService = (data, type, seatTables) => {
         let seatTablesArray = []
         if(seatTables && seatTables.length >0){
@@ -47,7 +48,54 @@ export const useHandleCallReservationService = () => {
             null
         ))
     }
+    const handleCallUserReservationsService = (additionalOnSuccess, additionalOnError) => {
+        serviceCall(new ServiceRequestData(
+            ReservationService.getUserReservation,
+            null,
+            null,
+            null,
+            (data) => {
+                if (additionalOnSuccess) {
+                    additionalOnSuccess(data)
+                }
+            },
+            null
+        ))
+    }
+    const handleCallGetReservationService = (id, additionalOnSuccess) => {
+        let requestData = {
+            id: id
+        }
+        serviceCall(new ServiceRequestData(
+            ReservationService.getReservation,
+            requestData,
+            useHandleSuccessGetReservationResponse,
+            null,
+            additionalOnSuccess,
+            null
+        ))
+    }
+    const handleCallDeleteReservationService = (id, additionalOnSuccess, additionalOnError) => {
+        let requestData = {
+            reservationId: id
+        }
+        serviceCall(new ServiceRequestData(
+            ReservationService.deleteReservation,
+            requestData,
+            null,
+            null,
+            (data) => {
+                if (additionalOnSuccess) {
+                    additionalOnSuccess(data)
+                }
+            },
+            null
+        ))
+    }
     return {
-        handleCreateReservationService: handleCallCreateReservationService 
+        handleCreateReservationService: handleCallCreateReservationService,
+        handleGetUserReservationsService: handleCallUserReservationsService,
+        handleGetReservationService: handleCallGetReservationService,
+        handleDeleteReservationService: handleCallDeleteReservationService,
     }
 }

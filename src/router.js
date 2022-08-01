@@ -23,6 +23,8 @@ import MyPlaceStaff from './components/tasks/place/myPlace/MyPlaceStaff.js'
 import MyPlaceStaffEdit from './components/tasks/place/myPlace/MyPlaceStaffEdit.js'
 import MyPlaces from './components/tasks/place/MyPlaces.js'
 import CreateReservationTask from './components/tasks/reservation/CreateReservationTask.js'
+import MyReservations from './components/tasks/reservation/MyReservations.js'
+import ReservationPreview from './components/tasks/reservation/ReservationPreview.js'
 import RegisterUser from './components/user/RegisterUser.js'
 import CreatePlaceWorkflow from './components/workflow/CreatePlaceWorkflow.js'
 import { history } from './store.js'
@@ -84,6 +86,8 @@ const router =
         <Route path={'/successCreatedPlace'} component={SuccessPlaceCreated} />
         <Route path={'/explore'} component={ExploreEvent} />
         <Route path={'/reservation'} component={CreateReservationTask} />
+        <Route path={'/myReservations'} component={MyReservations} />
+        <Route path={'/reservationPreview'} component={ReservationPreview} />
       </App>
     </Switch>
   </Router>
