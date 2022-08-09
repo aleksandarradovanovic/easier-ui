@@ -1,7 +1,7 @@
 import { Button } from "primereact/button";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { placeActor, publicActor } from "../../constants/serverConstants";
+import { adminActor, placeActor, publicActor } from "../../constants/serverConstants";
 import {  globalStore } from "../../constants/storeConstants";
 import { getCookie } from "../../service/restHandler";
 import { getFromAppStore, getFromGlobalStore } from "../../util/exportUtil";
@@ -80,6 +80,17 @@ export const useMenubarSettings = () => {
                             icon: "pi pi-fw pi-ticket",
                             command: () => {
                                 history.push('/myReservations')
+                            }
+                        }
+                    ]
+                    break;
+                case adminActor:
+                    menuItems = [
+                        {
+                            label: "Admin panel",
+                            icon: "pi pi-fw pi-cog",
+                            command: () => {
+                                history.push('/adminOverview')
                             }
                         }
                     ]

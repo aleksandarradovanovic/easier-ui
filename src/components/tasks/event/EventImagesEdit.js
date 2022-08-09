@@ -21,7 +21,6 @@ export const EventImagesEdit = (props) => {
         };
       }, [])
     const updateEvent = () => {
-        debugger
         let requestObject = {...selectedEvent, imagesDtos: selectedImages}
         handleCallEventService.handleUpdateEventService(requestObject)
     }

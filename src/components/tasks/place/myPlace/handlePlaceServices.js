@@ -66,6 +66,20 @@ export const useHandleCallPlaceService = () => {
             null
         ))
     }
+    const handleCallSearchPlacesService = (searchParams, additionalOnSuccess, additionalOnError) => {
+        serviceCall(new ServiceRequestData(
+            PlaceService.searchPlaces,
+            searchParams,
+            null,
+            null,
+            (data) => {
+                if (additionalOnSuccess) {
+                    additionalOnSuccess(data)
+                }
+            },
+            null
+        ))
+    }
     const handleCallMyPlacesService = (additionalOnSuccess, additionalOnError) => {
         serviceCall(new ServiceRequestData(
             PlaceService.getMyPlaces,
@@ -192,6 +206,7 @@ export const useHandleCallPlaceService = () => {
     const requests = {
         handleCreatePlacesService: handleCallCreatePlacesService,
         handleGetImagesRequest: handleCallPlaceImagesService,
+        handleSearchPlacesService: handleCallSearchPlacesService,
         handleGetMyPlacesService: handleCallMyPlacesService,
         handleGetPlaceService: handleCallGetPlaceService,
         handleGetPlaceSeatTableService: handleCallPlaceSeatTableService,

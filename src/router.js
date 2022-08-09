@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, Router, Switch } from 'react-router'
 import App from './App.js'
+import AdminOverview from './components/admin/AdminOverview.js'
+import AllPlacesAdminOverview from './components/admin/place/AllPlacesAdminOverview.js'
 import SuccessPlaceCreated from './components/common/SuccessPlaceCreated.js'
 import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
@@ -88,6 +90,9 @@ const router =
         <Route path={'/reservation'} component={CreateReservationTask} />
         <Route path={'/myReservations'} component={MyReservations} />
         <Route path={'/reservationPreview'} component={ReservationPreview} />
+
+        <Route path={'/adminOverview'} component={AdminOverview} />
+        <Route path={'/allPlacesAdminOverview'} component={AllPlacesAdminOverview} />
       </App>
     </Switch>
   </Router>
