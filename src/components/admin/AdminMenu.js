@@ -71,7 +71,7 @@ export const AdminMenu = (props) => {
                     label: I18n.t('label.viewEvents'),
                     icon: 'pi pi-eye',
                     command: (e) => {
-                        getPlaceEvents()
+                        history.push('/allEventsAdminOverview')
                     }
                 },
                 {

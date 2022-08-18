@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Router, Switch } from 'react-router'
 import App from './App.js'
 import AdminOverview from './components/admin/AdminOverview.js'
+import AllEventsAdminOverview from './components/admin/event/AllEventsAdminOverview.js'
 import AllPlacesAdminOverview from './components/admin/place/AllPlacesAdminOverview.js'
 import SuccessPlaceCreated from './components/common/SuccessPlaceCreated.js'
 import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
@@ -93,6 +94,7 @@ const router =
 
         <Route path={'/adminOverview'} component={AdminOverview} />
         <Route path={'/allPlacesAdminOverview'} component={AllPlacesAdminOverview} />
+        <Route path={'/allEventsAdminOverview'} component={AllEventsAdminOverview} />
       </App>
     </Switch>
   </Router>
