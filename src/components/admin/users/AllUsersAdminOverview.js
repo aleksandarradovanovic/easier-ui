@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import { Translate } from 'react-redux-i18n';
-import AllEvents from '../../tasks/event/AllEvents';
 import AdminWrapper from '../AdminWrapper';
+import AllUsers from './AllUsers';
 
-export const AllEventsAdminOverview = (props) => {
+export const AllUsersAdminOverview = (props) => {
     return (
         <AdminWrapper>
             <div className="card">
                 <div className='grid'>
                     <div className='col-12'>
                         <h5>
-                            <Translate value="label.events" />
+                            <Translate value="label.users" />
                         </h5>
-                        <AllEvents />
+                        {/* <AllEvents /> */}
+                        <AllUsers />
                     </div>
 
                 </div>
@@ -21,4 +22,4 @@ export const AllEventsAdminOverview = (props) => {
 
     )
 }
-export default AllEventsAdminOverview
+export default AllUsersAdminOverview

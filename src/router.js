@@ -3,7 +3,9 @@ import { Route, Router, Switch } from 'react-router'
 import App from './App.js'
 import AdminOverview from './components/admin/AdminOverview.js'
 import AllEventsAdminOverview from './components/admin/event/AllEventsAdminOverview.js'
+import AuditLogOverview from './components/admin/log/AuditLogOverview.js'
 import AllPlacesAdminOverview from './components/admin/place/AllPlacesAdminOverview.js'
+import AllUsersAdminOverview from './components/admin/users/AllUsersAdminOverview.js'
 import SuccessPlaceCreated from './components/common/SuccessPlaceCreated.js'
 import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
@@ -95,6 +97,8 @@ const router =
         <Route path={'/adminOverview'} component={AdminOverview} />
         <Route path={'/allPlacesAdminOverview'} component={AllPlacesAdminOverview} />
         <Route path={'/allEventsAdminOverview'} component={AllEventsAdminOverview} />
+        <Route path={'/allUsersAdminOverview'} component={AllUsersAdminOverview} />
+        <Route path={'/auditLogOverview'} component={AuditLogOverview} />
       </App>
     </Switch>
   </Router>

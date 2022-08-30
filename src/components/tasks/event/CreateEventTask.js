@@ -29,7 +29,7 @@ export const CreateEventTask = () => {
         )
     }, [])
     return (
-        <div class="grid">
+        <div class="grid-nogutter">
             <div class="col-8 col-offset-2">
                 <CreateEventWorkflow />
             </div>

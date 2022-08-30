@@ -126,7 +126,7 @@ const resolveStatusCode =
                 break;
             case 200:
             case 201:
-                if (responseJson.data) {
+                if (responseJson && responseJson.data) {
                     responseJson.data.json().then((data) => {
                         if (responseHandler && responseHandler.onSuccess) {
                             responseHandler.onSuccess(data)

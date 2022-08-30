@@ -56,7 +56,7 @@ export const AdminMenu = (props) => {
                     }
                 },
                 {
-                    label: I18n.t('label.createPlace'),
+                    label: I18n.t('label.create'),
                     icon: 'pi pi-plus',
                     command: (e) => {
                         history.push('/createPlace')
@@ -68,14 +68,14 @@ export const AdminMenu = (props) => {
             label: I18n.t('label.events'),
             items: [
                 {
-                    label: I18n.t('label.viewEvents'),
+                    label: I18n.t('label.view'),
                     icon: 'pi pi-eye',
                     command: (e) => {
                         history.push('/allEventsAdminOverview')
                     }
                 },
                 {
-                    label: I18n.t('label.createEvent'),
+                    label: I18n.t('label.create'),
                     icon: 'pi pi-plus',
                     command: (e) => {
                         history.push('/createPlaceEvent')
@@ -88,14 +88,14 @@ export const AdminMenu = (props) => {
             label: I18n.t('label.users'),
             items: [
                 {
-                    label: I18n.t('label.viewUsers'),
+                    label: I18n.t('label.view'),
                     icon: 'pi pi-eye',
                     command: (e) => {
-                        getPlaceEvents()
+                        history.push('/allUsersAdminOverview')
                     }
                 },
                 {
-                    label: I18n.t('label.createUser'),
+                    label: I18n.t('label.create'),
                     icon: 'pi pi-plus',
                     command: (e) => {
                         history.push('/createPlaceEvent')
@@ -121,6 +121,7 @@ export const AdminMenu = (props) => {
                     label: I18n.t('label.view'),
                     icon: 'pi pi-eye',
                     command: (e) => {
+                        history.push('/auditLogOverview')
                     }
                 }
             ]

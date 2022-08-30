@@ -55,7 +55,7 @@ export const CreatePlaceWorkflow = (props) => {
         handleGetPlaceService.handleCreatePlacesService()
     }
     return (
-        <div class="grid">
+        <div class="grid-nogutter">
             <div class="col-12 lg:col-8 lg:col-offset-2">
                 <NavigationComponent items={items} onSave={() => onSavePlace()} readOnly = {true}/>
             </div>

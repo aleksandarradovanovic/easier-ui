@@ -50,13 +50,16 @@ const Login = () => {
             <a className="font-medium no-underline ml-2 text-blue-500 cursor-pointer" href = "/register">Create today!</a>
           </div>
 
-          <div>
+          <div className="grid">
+            <div className="col-12">
             <FormElement
               label={I18n.t('label.' + formFields.USERNAME)}
               fieldType={fieldType.INPUT_TEXT}
               required
               fieldProps={{ name: formFields.USERNAME }}
             />
+            </div>
+            <div className="col-12">
             <FormElement
               label={I18n.t('label.' + formFields.PASSWORD)}
               fieldType={fieldType.PASSWORD}
@@ -67,6 +70,7 @@ const Login = () => {
                 toggleMask: true,
               }}
             />
+            </div>
             <div className="flex align-items-center justify-content-between mb-6">
               <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot your password?</a>
             </div>

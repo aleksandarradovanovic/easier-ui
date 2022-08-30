@@ -9,21 +9,23 @@ export const AdminOverview = (props) => {
         <AdminWrapper>
             <div className='card text-center'>
                 <div className='grid'>
-                    <div className="col-12 md:col-4 mb-4 px-5" onClick={() => history.push('/allPlacesAdminOverview')} style={{cursor:'pointer'}}>
+                    <div className="col-12 md:col-4 mb-4 px-5" onClick={() => history.push('/allPlacesAdminOverview')} style={{ cursor: 'pointer' }}>
                         <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
                             <i className="pi pi-building text-4xl text-blue-500"></i>
                         </span>
                         <div className="text-900 mb-3 font-medium">Places</div>
                         <span className="text-700 text-sm line-height-3">Overview of all places</span>
                     </div>
-                    <div className="col-12 md:col-4 mb-4 px-5" onClick={() => history.push('/allEventsAdminOverview')} style={{cursor:'pointer'}}>
+                    <div className="col-12 md:col-4 mb-4 px-5" onClick={() => history.push('/allEventsAdminOverview')} style={{ cursor: 'pointer' }}>
                         <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
                             <i className="pi pi-calendar text-4xl text-blue-500"></i>
                         </span>
                         <div className="text-900 mb-3 font-medium">Event</div>
                         <span className="text-700 text-sm line-height-3">Overview of all events</span>
                     </div>
-                    <div className="col-12 md:col-4 mb-4 px-5">
+                    <div className="col-12 md:col-4 mb-4 px-5" onClick={(e) => {
+                        history.push('/allUsersAdminOverview')
+                    }} style={{ cursor: 'pointer' }}>
                         <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
                             <i className="pi pi-user text-4xl text-blue-500"></i>
                         </span>
@@ -37,7 +39,9 @@ export const AdminOverview = (props) => {
                         <div className="text-900 mb-3 font-medium">Reservations</div>
                         <span className="text-700 text-sm line-height-3">Overview of all reservations</span>
                     </div>
-                    <div className="col-12 md:col-4 mb-4 px-5">
+                    <div className="col-12 md:col-4 mb-4 px-5" onClick={(e) => {
+                        history.push('/auditLogOverview')
+                    }} style={{ cursor: 'pointer' }}>
                         <span className="p-3 shadow-2 mb-3 inline-block" style={{ borderRadius: '10px' }}>
                             <i className="pi pi-history text-4xl text-blue-500"></i>
                         </span>

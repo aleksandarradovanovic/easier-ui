@@ -123,6 +123,8 @@ export const CreateReservationTask = (props) => {
                                             name: formFields.RESERVATION_NUMBER_OF_GUESTS
                                         }}
                                     />
+                                </div>
+                                <div className="col-12">
                                     <FormElement
                                         label={formFields.RESERVATION_EMAIL}
                                         fieldType={fieldType.INPUT_TEXT}
