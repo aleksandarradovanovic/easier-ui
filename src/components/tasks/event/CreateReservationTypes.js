@@ -56,10 +56,24 @@ export const CreateReservationTypes = (props) => {
         dispatch(addToAppStore(applicationStore.SELECTED_RESERVATION_TYPE, newReservationTypeList))
         resetFunc()
     }
+    let reservationTypeValidation = () => {
+        const priceRegex = /^\d+(,\d{1,2})?$/
+        const maxGuestsRegex = /^[0-9]{1,6}$/
+        let rules = {}
+
+        rules[formFields.RESERVATION_TYPE_PRICE] = {
+            pattern: { value: priceRegex, message: "Wrong price value" }
+        }
+        rules[formFields.RESERVATION_TYPE_MAX_NUMBER_OF_GUESTS] = {
+            pattern: { value: maxGuestsRegex, message: "Wrong max number of guests value" }
+        }
+        return rules
+    }
     return (
         <Fragment>
             <FormWrapper
                 submitFunction={(data, resetFunc) => addNewType(data, resetFunc)}
+                formRules={reservationTypeValidation()}
                 initialValues={initialValues}>
                 <div className='grid'>
                     <div className="col-12 sm:col-12 lg:col-6 md:col-6 xl:col-6">

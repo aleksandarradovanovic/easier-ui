@@ -7,10 +7,14 @@ import { applicationStore } from '../../../constants/storeConstants';
 import { getFromAppStore } from '../../../util/exportUtil';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
+import moment from 'moment'
+import { getGlobalFormValues } from '../../../util/globalFormUtil';
 
 export const EventInformation = (props) => {
     const selectedPlace = useSelector((state) => getFromAppStore(state, applicationStore.PLACE_DATA))
     const selectedPlaceOptions = useSelector((state) => getFromAppStore(state, applicationStore.EVENT_PLACE_NAME_OPTIONS))
+    const formValues = useSelector((state) => getGlobalFormValues(state))
+
     const [placeOptions, setPlaceOptions] = useState([]);
     const [disablePlaceName, setDisablePlaceName] = useState(false);
     const dispatch = useDispatch()
@@ -35,10 +39,27 @@ export const EventInformation = (props) => {
 
         }
     }, [selectedPlace, selectedPlaceOptions])
+    const eventInformationValidation = () => {
+        let rules = {}
+
+        rules[formFields.EVENT_TIME_TO] = {
+            validate: {
+                WorkingTimeToAfterFrom: (value) => {
+                    if (value && formValues && formValues[formFields.EVENT_TIME_FROM]) {
+                        var beginningTime = moment(formValues[formFields.EVENT_TIME_FROM]);
+                        var endTime = moment(value);
+                        return beginningTime.isBefore(endTime)
+                    }
+                }
+            }
+        }
+        return rules
+    }
     return (
         <Fragment>
             <FormWrapper
                 submitFunction={(data) => console.log(data)}
+                formRules={eventInformationValidation()}
                 initialValues={initialValues}>
                 <div className='card'>
                     <h5 className="sectionTitle">
@@ -76,7 +97,9 @@ export const EventInformation = (props) => {
                                     options: [
                                         { label: "Party", value: "party" },
                                         { label: "Concert", value: "concert" },
-                                        { label: "Game", value: "game" },
+                                        { label: "Sport", value: "sport" },
+                                        { label: "Movie", value: "movie" },
+                                        { label: "Stand up", value: "standUp" },
                                     ]
                                 }}
                             />
@@ -107,6 +130,7 @@ export const EventInformation = (props) => {
                                 label={formFields.EVENT_TIME_TO}
                                 fieldType={fieldType.INPUT_DATE_PICKER}
                                 required
+                                readOnly={!formValues || !formValues[formFields.EVENT_TIME_FROM]}
                                 fieldProps={{ name: formFields.EVENT_TIME_TO, showTime: true }}
                             />
                         </div>

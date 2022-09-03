@@ -4,42 +4,33 @@ import React from 'react';
 import { fieldType, formFields } from '../../../constants/form';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 
-export const ExploreFilterForm = (props) => {
+export const AuditLogFilter = (props) => {
     return (
         <div class="grid">
             <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                 <FormElement
-                    label={formFields.PLACE_NAME}
+                    label={formFields.COMMAND_NAME}
                     fieldType={fieldType.INPUT_TEXT}
                     fieldProps={{
-                        name: formFields.EVENT_PLACE_NAME
+                        name: formFields.COMMAND_NAME
                     }}
                 />
             </div>
             <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
                 <FormElement
-                    label={formFields.EVENT_NAME}
-                    fieldType={fieldType.INPUT_TEXT}
+                    label={formFields.COMMAND_AT}
+                    fieldType={fieldType.INPUT_DATE_PICKER}
                     fieldProps={{
-                        name: formFields.EVENT_NAME
+                        name: formFields.COMMAND_AT
                     }}
                 />
             </div>
             <div className="col-12 sm:col-12 lg:col-4 md:col-6 xl:col-4">
-                <FormElement
-                    label={formFields.EVENT_TYPE}
-                    fieldType={fieldType.INPUT_DROPDOWN}
-                    fieldProps=
-                    {{
-                        name: formFields.EVENT_TYPE,
-                        options: [
-                            { label: "Party", value: "party" },
-                            { label: "Concert", value: "concert" },
-                            { label: "Sport", value: "sport" },
-                            { label: "Movie", value: "movie" },
-                            { label: "Stand up", value: "standUp" },
-                        ],
-                        showClear: true
+            <FormElement
+                    label={formFields.USER_IDENTITY}
+                    fieldType={fieldType.INPUT_TEXT}
+                    fieldProps={{
+                        name: formFields.USER_IDENTITY
                     }}
                 />
             </div>
@@ -50,4 +41,4 @@ export const ExploreFilterForm = (props) => {
         </div>
     )
 }
-export default ExploreFilterForm
+export default AuditLogFilter

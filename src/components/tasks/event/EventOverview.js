@@ -10,6 +10,7 @@ import { applicationStore } from '../../../constants/storeConstants';
 import MyPlaceWrapper from '../place/myPlace/MyPlaceWrapper';
 import { useHandleCallEventService } from './handleEventServices';
 import { Image } from 'primereact/image';
+import PlaceEventWrapper from './PlaceEventWrapper';
 
 export const EventOverview = (props) => {
 
@@ -18,7 +19,7 @@ export const EventOverview = (props) => {
     const handleCallEventService = useHandleCallEventService()
     let name = ""
     if (selectedEvent && selectedEvent.name) {
-        name = " - " + selectedEvent.name
+        name = "- " +  selectedEvent.name
     }
     const getEventImages = (edit) => {
         handleCallEventService.handleGetEventImagesService(edit)
@@ -51,13 +52,23 @@ export const EventOverview = (props) => {
         });
         return items;
     }
-
+    const getReservations = () => {
+        history.push('/myEventReservations')
+    }
     return (
-        <MyPlaceWrapper>
+        <PlaceEventWrapper>
             <div className='card'>
-                <h4>
-                    <Translate value="label.eventData" /> {name}
-                </h4>
+                <div className='grid'>
+                    <div className='col-6'>
+                        <h4>
+                            <Translate value="label.eventData" /> {name}
+                        </h4>
+                    </div>
+                    <div className='col-6 text-right'>
+                        <Button icon="pi pi-arrow-left" className="p-button-rounded p-button-info edit-place-button mt-2" onClick={() => history.goBack()} />
+                    </div>
+                </div>
+
                 <div className='grid'>
                     <div className='col-6'>
                         <div className='grid'>
@@ -102,6 +113,22 @@ export const EventOverview = (props) => {
 
                                 </div>
                             </div>
+                            <div className='col-12'>
+                                <h5>
+                                    <Translate value="label.reservations" />
+                                    <Button icon="pi pi-eye" className="p-button-rounded p-button-info edit-place-button" onClick={() => { getReservations() }} />
+                                    {/* <Button icon="pi pi-pencil" className="p-button-rounded p-button-success edit-place-button" onClick={() => { getEventImages(true) }} /> */}
+                                </h5>
+                                <div>
+                                    <AvatarGroup>
+                                        <Avatar image={process.env.PUBLIC_URL + "/ticketPlaceholder.png"} size="xlarge" />
+                                        <Avatar image={process.env.PUBLIC_URL + "/ticketPlaceholder.png"} size="xlarge" />
+                                        <Avatar image={process.env.PUBLIC_URL + "/ticketPlaceholder.png"} size="xlarge" />
+                                        <Avatar label="+2" size="xlarge" />
+                                    </AvatarGroup>
+
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -111,7 +138,7 @@ export const EventOverview = (props) => {
 
 
             </div>
-        </MyPlaceWrapper>
+        </PlaceEventWrapper>
 
     )
 }

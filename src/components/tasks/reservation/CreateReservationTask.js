@@ -69,7 +69,27 @@ export const CreateReservationTask = (props) => {
         return seatTables
     }
     const paymentOptions = [];
+    let reservationValidation = () => {
+        const maxGuestsRegex = /^[0-9]{1,6}$/
+        const emailRegex =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        let rules = {}
+        rules[formFields.RESERVATION_EMAIL] = {
+            pattern: { value: emailRegex, message: "Wrong email format" }
+        }
+        rules[formFields.RESERVATION_NUMBER_OF_GUESTS] = {
+            pattern: { value: maxGuestsRegex, message: "Wrong number of guests value" },
+            validate: {
+                ReservationMaxNumberMustBeLessThenMuxNumberOfGuests: (value) => {
+                    if (value && selectedType && selectedType.maxNumberOfGuests) {
+                        if (parseInt(value) > selectedType.maxNumberOfGuests)
+                            return false
+                    }
+                }
+            }
+        }
 
+        return rules
+    }
     return (
         <div className="orderlist-demo">
             <Dialog header="Choose your seat/table" footer={footer} visible={displayChooseSeatDialog} style={{ width: '90vw' }} modal onHide={() => {
@@ -95,11 +115,12 @@ export const CreateReservationTask = (props) => {
                             itemTemplate={itemTemplate} onChange={(e) => setReservationTypes(e)}></OrderList>
                     </div>
                     <div className='col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6'>
-                        <h5 className="sectionTitle">
+                        <h5 className="sectionTitle mt-5">
                             <Translate value="label.reservationInformation" />
                         </h5>
                         <FormWrapper
                             submitFunction={(data, resetFunc) => { onSaveReservation(data) }}
+                            formRules={reservationValidation()}
                             initialValues={initialValues}>
                             <div class="grid">
                                 <div className="col-12">

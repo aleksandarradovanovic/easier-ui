@@ -1,7 +1,7 @@
 import React from "react";
 import { formFields, fieldType } from "../../constants/form";
 import { I18n } from "react-redux-i18n";
-import { connect, useDispatch } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import FormWrapper from "../primeCustomComponents/form/FormWrapper";
 import FormElement from "../primeCustomComponents/form/FormElement";
 import { ServiceRequestData } from '../../constants/service'
@@ -9,9 +9,11 @@ import { useCreateServiceWrapper } from '../../service/serviceWrapper'
 import { Button } from "primereact/button"
 import UserService from "../../service/user/UserService";
 import { handleErrorRegisterResponse, handleSuccessRegisterResponse } from "../../service/user/handleUserServiceResponse";
+import { getGlobalFormValues } from "../../util/globalFormUtil";
 const RegisterUser = (props) => {
   const serviceCall = useCreateServiceWrapper();
   let dispatch = useDispatch();
+  const formValues = useSelector((state) => getGlobalFormValues(state))
 
   const useHandleSuccessRegisterResponse = handleSuccessRegisterResponse()
   const useHandleErrorRegisterResponse = handleErrorRegisterResponse()
@@ -42,10 +44,36 @@ const RegisterUser = (props) => {
     [formFields.PASSWORD]: "",
     [formFields.PASSWORD_REPEATED]: ""
   };
+  let registerValidation = () => {
+    const emailRegex =  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const phoneRegex =  /^(\+\d{1,3}[- ]?)?\d{8,11}$/
+    let rules = {}
+    rules[formFields.EMAIL] = {
+        pattern: { value: emailRegex, message: "Wrong email format" }
+    }
+    rules[formFields.PHONE_NUMBER] = {
+        pattern: { value: phoneRegex, message: "Wrong phone format" }
+    }
+    rules[formFields.PASSWORD_REPEATED] = {
+        validate: {
+            PasswordRepeatIsNotSameAsPassword: (value) => {
+                if(value && formValues[formFields.PASSWORD]){
+                    if(formValues[formFields.PASSWORD] != value){
+                        return false
+                    }
+                }
+            }
+        }
+    }
+
+    return rules
+}
   return (
     <FormWrapper
       submitFunction={(data) => submitLogin(data)}
       initialValues={initialValues}
+      formRules={registerValidation()}
+
     // mode={"onSubmit"}
     >
       <div className="flex align-items-center justify-content-center">

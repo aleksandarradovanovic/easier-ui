@@ -36,6 +36,18 @@ const PlaceLocationPicker = () => {
         setDefaultLocation({ ...DefaultLocation });
         setZoom(DefaultZoom);
     }
+    let locationValidation = () => {
+        const regexForLatLong = /([0-9.-]+).+?([0-9.-]+)/
+        let rules = {}
+
+        rules[formFields.PLACE_LOCATION_LAT] = {
+            pattern: { value: regexForLatLong, message: "Wrong latitude value" }
+        }
+        rules[formFields.PLACE_LOCATION_LONG] = {
+            pattern: { value: regexForLatLong, message: "Wrong longitude value" }
+        }
+        return rules
+    }
     let initialValues = {
         [formFields.PLACE_LOCATION_COUNTRY]: "",
         [formFields.PLACE_LOCATION_CITY]: "",
@@ -51,6 +63,7 @@ const PlaceLocationPicker = () => {
                 </h5>
                 <FormWrapper
                     submitFunction={(data) => console.log(data)}
+                    formRules={locationValidation()}
                     initialValues={initialValues}>
                     <div className='grid'>
 

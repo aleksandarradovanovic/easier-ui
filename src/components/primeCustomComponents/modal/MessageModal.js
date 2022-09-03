@@ -21,7 +21,7 @@ const MessageModal = () => {
     }, [modalReducer])
     const footer = <Button label={I18n.t('action.close')} icon="pi pi-times" onClick={() => onClose()} className="p-button-text" />
     return (
-        <Dialog header={<Translate value={'action.info'} />} visible={showDialog} style={{ width: '50vw' }} footer={footer} onHide={() => onClose()}>
+        <Dialog header={<Translate value={'action.info'} />} visible={showDialog} style={{ width: '50vw' }} headerStyle={{ backgroundColor: "#5281cd", color:"#fff" }} contentStyle={{padding:"2%"}} footer={footer} onHide={() => onClose()}>
             <p> {message ? <Translate value={message}/>: <div/>}</p>
         </Dialog>
     );

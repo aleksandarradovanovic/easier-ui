@@ -1,21 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { useHandleCallEventService } from '../event/handleEventServices';
 import { DataView, DataViewLayoutOptions } from 'primereact/dataview';
-import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
-import moment from 'moment'
 import { Fieldset } from 'primereact/fieldset';
-import { fieldType, formFields } from '../../../constants/form';
+import { formFields } from '../../../constants/form';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
-import FormElement from '../../primeCustomComponents/form/FormElement';
 import ExploreFilterForm from './ExploreFilterForm';
 import { useHistory } from 'react-router';
-import { Tooltip } from 'primereact/tooltip';
 import { getCookie } from '../../../service/restHandler';
 import { I18n } from 'react-redux-i18n';
-
+import moment from 'moment';
 export const ExploreEvent = (props) => {
     // const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
     const handleCallEventService = useHandleCallEventService()
@@ -32,9 +27,9 @@ export const ExploreEvent = (props) => {
 
     const getEventData = (pageProp, pageSizeProp, filterData) => {
         let page = pageProp || 1
-        let pageSize = pageSizeProp || 10
+        let pageSize = pageSizeProp || 10        
         let requestObject = {
-            ...filterData,
+            ...filterData, startTime: moment().toISOString(),
             page: page,
             pageSize: pageSize
         }

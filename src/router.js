@@ -6,6 +6,7 @@ import AllEventsAdminOverview from './components/admin/event/AllEventsAdminOverv
 import AuditLogOverview from './components/admin/log/AuditLogOverview.js'
 import AllPlacesAdminOverview from './components/admin/place/AllPlacesAdminOverview.js'
 import AllUsersAdminOverview from './components/admin/users/AllUsersAdminOverview.js'
+import CreateUser from './components/admin/users/CreateUser.js'
 import SuccessPlaceCreated from './components/common/SuccessPlaceCreated.js'
 import SuccessRegisterPanel from './components/common/SuccessRegisterPanel.js'
 import Login from './components/login/Login.js'
@@ -27,6 +28,7 @@ import MyPlaceSeatTablesEdit from './components/tasks/place/myPlace/MyPlaceSeatT
 import MyPlaceStaff from './components/tasks/place/myPlace/MyPlaceStaff.js'
 import MyPlaceStaffEdit from './components/tasks/place/myPlace/MyPlaceStaffEdit.js'
 import MyPlaces from './components/tasks/place/MyPlaces.js'
+import AllReservations from './components/tasks/reservation/AllReservations.js'
 import CreateReservationTask from './components/tasks/reservation/CreateReservationTask.js'
 import MyReservations from './components/tasks/reservation/MyReservations.js'
 import ReservationPreview from './components/tasks/reservation/ReservationPreview.js'
@@ -85,6 +87,7 @@ const router =
         <Route path={'/eventOverview'} component={EventOverview} />
         <Route path={'/myEventBasicInformationEdit'} component={EventInformationEdit} />
         <Route path={'/eventImagesEdit'} component={EventImagesEdit} />
+        <Route path={'/myEventReservations'} component={AllReservations} />
         <Route path={'/login'} component={Login} />
         <Route path={'/register'} component={RegisterUser} />
         <Route path={'/successRegister'} component={SuccessRegisterPanel} />
@@ -98,6 +101,7 @@ const router =
         <Route path={'/allPlacesAdminOverview'} component={AllPlacesAdminOverview} />
         <Route path={'/allEventsAdminOverview'} component={AllEventsAdminOverview} />
         <Route path={'/allUsersAdminOverview'} component={AllUsersAdminOverview} />
+        <Route path={'/adminCreateUser'} component={CreateUser} />
         <Route path={'/auditLogOverview'} component={AuditLogOverview} />
       </App>
     </Switch>

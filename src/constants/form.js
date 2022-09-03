@@ -18,6 +18,7 @@ export const fieldType = Object.freeze({
   SLIDER:'slider'
 })
 export const formFields = Object.freeze({
+  ACTOR_NAME: 'actorId',
   FIRST_NAME: 'firstName',
   LAST_NAME: 'lastName',
   EMAIL: 'email',
@@ -55,6 +56,9 @@ export const formFields = Object.freeze({
   RESERVATION_NAME_ON:'reservationNameOn',
   RESERVATION_EMAIL:'reservationEmail',
   RESERVATION_NUMBER_OF_GUESTS:'reservationNumberOfGuests',
+  COMMAND_NAME:"commandName",
+  COMMAND_AT:"commandAt",
+  USER_IDENTITY:"userIdentity",
 
 
 

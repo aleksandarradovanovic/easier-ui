@@ -26,6 +26,9 @@ export default class EventService {
     if(params.eventType){
       getRequest += "&type=" + params.eventType
     }
+    if(params.startTime){
+      getRequest += "&startTime=" + params.startTime
+    }
     return Rest(ROOT_ENDPOINT)(fetchActions.GET, getRequest, '', '', responseHandler);
   }
   static getEvent(params, responseHandler) {

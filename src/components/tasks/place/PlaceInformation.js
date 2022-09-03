@@ -1,19 +1,40 @@
 import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import { I18n, Translate } from 'react-redux-i18n';
 import { fieldType, formFields } from '../../../constants/form';
+import { getGlobalFormValues } from '../../../util/globalFormUtil';
 import FormElement from '../../primeCustomComponents/form/FormElement';
 import FormWrapper from '../../primeCustomComponents/form/FormWrapper';
-
+import moment from 'moment'
 export const PlaceInformation = (props) => {
+    const formValues = useSelector((state) => getGlobalFormValues(state))
+
     let initialValues = {
         [formFields.PLACE_NAME]: "",
         [formFields.PLACE_TYPE]: "",
         [formFields.PLACE_DESC]: ""
     };
+    const placeInformationValidation = () => {
+        let rules = {}
+
+        rules[formFields.PLACE_WORKING_TIME_TO] = {
+            validate: {
+                WorkingTimeToAfterFrom: (value) => {
+                    if (value && formValues && formValues[formFields.PLACE_WORKING_TIME_FROM]) {
+                        var beginningTime = moment(formValues[formFields.PLACE_WORKING_TIME_FROM], 'h:mma');
+                        var endTime = moment(value, 'h:mma');
+                        return beginningTime.isBefore(endTime)
+                    }
+                }
+            }
+        }
+        return rules
+    }
     return (
         <Fragment>
             <FormWrapper
                 submitFunction={(data) => console.log(data)}
+                formRules={placeInformationValidation()}
                 initialValues={initialValues}>
                 <div className='card'>
                     <h5 className="sectionTitle">
@@ -36,8 +57,8 @@ export const PlaceInformation = (props) => {
                                 fieldProps=
                                 {{
                                     name: formFields.PLACE_TYPE,
-                                    tooltip:I18n.t("message.placeTypeTip")
-                                 
+                                    tooltip: I18n.t("message.placeTypeTip")
+
                                 }}
                             />
                         </div>
@@ -67,6 +88,7 @@ export const PlaceInformation = (props) => {
                                 label={formFields.PLACE_WORKING_TIME_TO}
                                 fieldType={fieldType.INPUT_DATE_PICKER}
                                 required
+                                readOnly={!formValues || !formValues[formFields.PLACE_WORKING_TIME_FROM]}
                                 fieldProps={{ name: formFields.PLACE_WORKING_TIME_TO, timeOnly: true, hourFormat: "24" }}
                             />
                         </div>

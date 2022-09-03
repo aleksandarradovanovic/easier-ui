@@ -83,7 +83,7 @@ const resolveStatusCode =
                 window.location = "/login";
                 break;
             case 404:
-                window.location = ERROR_PAGE_URL_404;
+                // window.location = ERROR_PAGE_URL_404;
                 break;
             case 422:
                 if (responseJson.data) {

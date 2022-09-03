@@ -98,7 +98,7 @@ export const AdminMenu = (props) => {
                     label: I18n.t('label.create'),
                     icon: 'pi pi-plus',
                     command: (e) => {
-                        history.push('/createPlaceEvent')
+                        history.push('/adminCreateUser')
                     }
                 }
             ]

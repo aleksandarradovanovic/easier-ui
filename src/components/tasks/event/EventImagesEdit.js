@@ -8,6 +8,7 @@ import { removeFromAppStore } from '../../../actions';
 import UploadEventImages from './UploadEventImages';
 import MyPlaceWrapper from '../place/myPlace/MyPlaceWrapper';
 import { useHandleCallEventService } from './handleEventServices';
+import PlaceEventWrapper from './PlaceEventWrapper';
 
 export const EventImagesEdit = (props) => {
     const selectedImages = useSelector((state) => getFromAppStore(state, applicationStore.SELECTED_EVENT_IMAGES))
@@ -25,7 +26,7 @@ export const EventImagesEdit = (props) => {
         handleCallEventService.handleUpdateEventService(requestObject)
     }
     return (
-        <MyPlaceWrapper>
+        <PlaceEventWrapper>
             <div className="card">
                 <div className='grid'>
                     <div className='col-12'>
@@ -40,7 +41,7 @@ export const EventImagesEdit = (props) => {
                 </div>
             </div>
 
-        </MyPlaceWrapper>
+        </PlaceEventWrapper>
 
     )
 }

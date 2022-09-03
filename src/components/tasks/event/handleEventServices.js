@@ -36,7 +36,7 @@ export const useHandleCallEventService = () => {
                     if(element.includes(formFields.RESERVATION_TYPE_NAME)){
                         if(element[element.length-1] && !isNaN(element[element.length-1]) && formValues[element] == item.name){
                             seatsForType.push({
-                                seatTableId:  parseInt(element[element.length-1]) 
+                                seatTableId:  parseInt(element.split(formFields.RESERVATION_TYPE_NAME)[1]) 
                             })
                         }
                     }
